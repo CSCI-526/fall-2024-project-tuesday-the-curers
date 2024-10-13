@@ -9,20 +9,17 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Target"))
         {
-            print("Hit" + collision.gameObject.name + " !");
             Destroy(gameObject);
         }
 
         if (collision.gameObject.CompareTag("Wall"))
         {
-            print("Hit Wall");
             Destroy(gameObject);
         }
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<ZombieState>().TakeDamage(bulletDamage);
-            print("Hit Enemy");
             Destroy(gameObject);
         }
     }

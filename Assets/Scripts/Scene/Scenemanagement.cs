@@ -15,15 +15,10 @@ public class Scenemanagement : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
-    public void LoadTestField()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(2);
-    }
     public void LoadLevel1()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
     public void onQuitButton()
     {

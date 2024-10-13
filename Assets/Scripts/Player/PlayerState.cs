@@ -12,6 +12,11 @@ public class playerState : MonoBehaviour
     public Slider slider;
 
     public GameObject lossUI;
+    
+    public float dealy = 1.5f;
+    public float delay2 = 1f;
+    private float timmer = 0;
+    private float timmer2 = 0;
 
     void Start()
     {
@@ -49,13 +54,31 @@ public class playerState : MonoBehaviour
     void Update()
     {
         HealthCheck();
+        timmer2 += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(10);
+            if(timmer2 > delay2)
+            {
+                TakeDamage(10);
+                timmer2 = 0;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (timmer > dealy)
+            {
+                TakeDamage(10);
+                timmer = 0;
+            }
+            timmer += Time.deltaTime;
         }
     }
 }

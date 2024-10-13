@@ -57,8 +57,7 @@ public class InteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    WeaponManager.Instance.UseAnti();
-                    if(objectHitByRaycast.GetComponent<ZombieState>().health <= 50)
+                    if(objectHitByRaycast.GetComponent<ZombieState>().health <= 50 && WeaponManager.Instance.UseAnti())
                     {
                         objectHitByRaycast.GetComponent<ZombieState>().colorlighter();
                     }
