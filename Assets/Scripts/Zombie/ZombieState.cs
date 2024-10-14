@@ -13,7 +13,7 @@ public class ZombieState : MonoBehaviour
     public Slider slider;
 
     // Color Controll
-    private float timmer = 60f;
+    private float timmer = 30f;
     private Renderer objectRenderer;
     public int zombie_state = 0;
     private Color[] colors = { Color.green, new Color(1f, 0.5f, 0f), Color.red };
@@ -56,12 +56,16 @@ public class ZombieState : MonoBehaviour
             timmer = 10f;
             health = Maxhealth;
         }
+        else if(zombie_state == 0)
+        {
+            curedCount.Instance.count++;
+            Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
-        animator.SetTrigger("DAMAGE");
     }
 
     private float calHealth()
@@ -80,7 +84,7 @@ public class ZombieState : MonoBehaviour
   
         if (health <= 0)
         {
-            animator.SetTrigger("DIE");
+            curedCount.Instance.killed++;
             Destroy(gameObject);
         }
         if (health > Maxhealth)

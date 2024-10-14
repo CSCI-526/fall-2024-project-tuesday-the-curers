@@ -18,11 +18,12 @@ public class HUDManager : MonoBehaviour
 
     public Image antiPic;
     public TextMeshProUGUI antiNum;
+    public TextMeshProUGUI PrimName;
+    public TextMeshProUGUI SendName;
+    public TextMeshProUGUI MissionBoard;
+    public TextMeshProUGUI statistic;
 
     public Sprite emptyslot;
-    public Sprite rifel;
-    public Sprite pistol;
-    public Sprite anti;
 
     private void Awake()
     {
@@ -35,13 +36,18 @@ public class HUDManager : MonoBehaviour
             Instance = this;
         }
     }
-    private void Start()
-    {
-        antiPic.sprite = anti;
-    }
 
     private void Update()
     {
+        if(curedCount.Instance.count < curedCount.Instance.level_mission)
+        {
+            MissionBoard.text = $"{"Mission: Cure at least " + curedCount.Instance.level_mission + " Zombies "}";
+        }
+        else if(curedCount.Instance.count >= curedCount.Instance.level_mission) 
+        {
+            MissionBoard.text = $"{"Mission accomplish, Leave the area."}";
+        }
+        statistic.text = $"{"Cured: " + curedCount.Instance.count + "\n" + "Killed: " + curedCount.Instance.killed }";
         antiNum.text = $"{WeaponManager.Instance.totalAntis}";
         Weapon actived = WeaponManager.Instance.activeWeaponSlot.GetComponentInChildren<Weapon>();
         Weapon unacted = GetUnActivedSlot().GetComponentInChildren<Weapon>();
@@ -49,15 +55,29 @@ public class HUDManager : MonoBehaviour
         if (actived)
         {
             currentAmmo.text = $"{actived.bulletLeft / actived.bulletPerBurst}";
-            totalAmmo.text = $"{WeaponManager.Instance.CheckAmmoleft(actived.thisweapon)}";
+            totalAmmo.text = $"{"/" + WeaponManager.Instance.CheckAmmoleft(actived.thisweapon)}";
 
             Weapon.WeaponModel model = actived.thisweapon;
 
-            activeWeapon.sprite = GetWeaponSprite(model);
+            if(model == Weapon.WeaponModel.Pistol)
+            {
+                PrimName.text = $"Pistol";
+            }
+            if (model == Weapon.WeaponModel.Rifel)
+            {
+                PrimName.text = $"Rifle";
+            }
 
             if (unacted)
             {
-                secondWeapon.sprite = GetWeaponSprite(unacted.thisweapon);
+                if (unacted.thisweapon == Weapon.WeaponModel.Pistol)
+                {
+                    SendName.text = $"Pistol";
+                }
+                if (unacted.thisweapon == Weapon.WeaponModel.Rifel)
+                {
+                    SendName.text = $"Rifle";
+                }
             }
         }
         else
@@ -65,21 +85,8 @@ public class HUDManager : MonoBehaviour
             currentAmmo.text = "";
             totalAmmo.text = "";
 
-            activeWeapon.sprite = emptyslot;
-            secondWeapon.sprite = emptyslot;
-        }
-    }
-
-    private Sprite GetWeaponSprite(Weapon.WeaponModel model)
-    {
-        switch (model)
-        {
-            case Weapon.WeaponModel.Rifel:
-                return rifel;
-            case Weapon.WeaponModel.Pistol:
-                return pistol;
-            default:
-                return null;
+            PrimName.text = "";
+            SendName.text = "";
         }
     }
 

@@ -123,16 +123,40 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    internal void DecreaseAmmo(int bulletodecrease, Weapon.WeaponModel thisweapon)
+    internal int DecreaseAmmo(int bulletodecrease, Weapon.WeaponModel thisweapon)
     {
-        switch (thisweapon)
+        if(thisweapon == WeaponModel.Rifel)
         {
-            case Weapon.WeaponModel.Rifel:
+            if(totalRifelAmmo >= bulletodecrease)
+            {
                 totalRifelAmmo -= bulletodecrease;
-                break;
-            case Weapon.WeaponModel.Pistol:
+                return bulletodecrease;
+            }
+            else
+            {
+                int actual = totalRifelAmmo;
+                totalRifelAmmo = 0;
+                return actual;
+            }
+        }
+        else if(thisweapon == WeaponModel.Pistol)
+        {
+            if (totalPistolAmmo >= bulletodecrease)
+            {
                 totalPistolAmmo -= bulletodecrease;
-                break;
+                return bulletodecrease;
+            }
+            else
+            {
+                int actual = totalPistolAmmo;
+                totalPistolAmmo = 0;
+                return actual;
+            }
+        }
+        else
+        {
+            Debug.Log("Type Error");
+            return 0;
         }
     }
 
@@ -149,8 +173,13 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public void UseAnti()
+    public bool UseAnti()
     {
-        totalAntis--;
+        if(totalAntis > 0)
+        {
+            totalAntis--;
+            return true;
+        }
+        return false;
     }
 }

@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public float bulletVelocity = 30;
-    public float bulletPrefabLifeTime = 3f;
+    public float bulletPrefabLifeTime = 2f;
 
     // Shooting mode
     public ShootingMode currentMode;
@@ -100,16 +100,9 @@ public class Weapon : MonoBehaviour
 
     private void ReloadCompleted()
     {
-        if(WeaponManager.Instance.CheckAmmoleft(thisweapon) > magazineSize)
-        {
-            bulletLeft = magazineSize;
-            WeaponManager.Instance.DecreaseAmmo(bulletLeft, thisweapon);
-        }
-        else
-        {
-            bulletLeft = WeaponManager.Instance.CheckAmmoleft(thisweapon);
-            WeaponManager.Instance.DecreaseAmmo(bulletLeft, thisweapon);
-        }
+        int need_amount = magazineSize - bulletLeft;
+        int reload_amount = WeaponManager.Instance.DecreaseAmmo(need_amount, thisweapon);
+        bulletLeft += reload_amount;
         isReloading = false;
     }
 
