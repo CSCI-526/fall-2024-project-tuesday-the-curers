@@ -64443,7 +64443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7549006896173372555, guid: d23238388b294d3458d9adb102eaf4d0, type: 3}
       propertyPath: mouseSensitivity
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7665807447844498011, guid: d23238388b294d3458d9adb102eaf4d0, type: 3}
       propertyPath: lossUI
