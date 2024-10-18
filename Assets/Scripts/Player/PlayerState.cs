@@ -55,6 +55,7 @@ public class playerState : MonoBehaviour
     {
         HealthCheck();
         timmer2 += Time.deltaTime;
+        timmer += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,6 +66,7 @@ public class playerState : MonoBehaviour
             {
                 TakeDamage(10);
                 timmer2 = 0;
+                timmer = 0;
             }
         }
     }
@@ -73,12 +75,13 @@ public class playerState : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (timmer > dealy)
+            if (timmer >= dealy)
             {
+                Debug.Log("here");
                 TakeDamage(10);
                 timmer = 0;
             }
-            timmer += Time.deltaTime;
+            timmer2 = 0;
         }
     }
 }

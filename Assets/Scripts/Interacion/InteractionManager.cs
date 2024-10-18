@@ -53,13 +53,17 @@ public class InteractionManager : MonoBehaviour
                 }
             }
 
-            if (objectHitByRaycast.CompareTag("Enemy"))
+            if (objectHitByRaycast.CompareTag("Enemy") || objectHitByRaycast.CompareTag("Other"))
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if(objectHitByRaycast.GetComponent<ZombieState>().health <= 50 && WeaponManager.Instance.UseAnti())
                     {
                         objectHitByRaycast.GetComponent<ZombieState>().colorlighter();
+                    }
+                    if (objectHitByRaycast.GetComponent<ZombieState>().health > 50 && WeaponManager.Instance.UseAnti())
+                    {
+                        
                     }
                 }
             }

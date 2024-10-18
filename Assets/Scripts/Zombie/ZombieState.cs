@@ -98,14 +98,4 @@ public class ZombieState : MonoBehaviour
     {
         HealthCheck();
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Anti"))
-        {
-            Debug.Log("GET HIT");
-            colorlighter();
-        }
-
-    }
 }

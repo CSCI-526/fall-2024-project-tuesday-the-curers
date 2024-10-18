@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 6629121364472939629}
   - component: {fileID: 4550847521057415056}
   - component: {fileID: 7454857930045735575}
+  - component: {fileID: 8603406587575532534}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -396,6 +397,7 @@ MonoBehaviour:
   Maxhealth: 100
   healthbar: {fileID: 9051437755574229546}
   slider: {fileID: 4467229249082832279}
+  zombie_state: 0
 --- !u!195 &6629121364472939629
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -452,6 +454,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nvob: {fileID: 0}
+--- !u!136 &8603406587575532534
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340663172360619675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6090241044056045077
 GameObject:
   m_ObjectHideFlags: 0
