@@ -24,10 +24,9 @@ public class rangeUIControl : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            disESC = true;
+            disESC = false;
             winUI.SetActive(false);
             Time.timeScale = 1f;
-            disESC = false;
         }
         else
         {
@@ -36,26 +35,27 @@ public class rangeUIControl : MonoBehaviour
             disESC = true;
             winUI.SetActive(true);
             Time.timeScale = 0f;
-            disESC = false;
         }
     }
 
     public void showPulseUI()
     {
-        
-        if (pauseUI.activeSelf)
+        if (!disESC)
         {
-            pauseUI.SetActive(false);
-            Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            pauseUI.SetActive(true);
-            Time.timeScale = 0f;
+            if (pauseUI.activeSelf)
+            {
+                pauseUI.SetActive(false);
+                Time.timeScale = 1f;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                pauseUI.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
     }
 
@@ -71,6 +71,7 @@ public class rangeUIControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !disESC)
         {
+            Debug.Log("here");
             showPulseUI();
         }
     }

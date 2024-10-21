@@ -22,5 +22,11 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<ZombieState>().TakeDamage(bulletDamage);
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Other"))
+        {
+            collision.gameObject.GetComponent<ZombieState>().TakeDamage(bulletDamage);
+            Destroy(gameObject);
+        }
     }
 }

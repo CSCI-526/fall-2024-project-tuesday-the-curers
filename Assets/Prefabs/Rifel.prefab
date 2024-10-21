@@ -160,7 +160,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4495349326307309868, guid: f34df36cdf439944d90953870757c2d7, type: 3}
   bulletSpawn: {fileID: 7302487030947609639}
   bulletVelocity: 700
-  bulletPrefabLifeTime: 3
+  bulletPrefabLifeTime: 2
   currentMode: 2
   reloadTime: 2
   magazineSize: 30
