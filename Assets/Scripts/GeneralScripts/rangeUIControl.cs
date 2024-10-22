@@ -8,11 +8,13 @@ public class rangeUIControl : MonoBehaviour
     public GameObject pauseUI;
     public GameObject loseUI;
     public GameObject winUI;
+    public GameObject ReloadUI;
     public void showLoseUI()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         disESC = true;
+        ReloadUI.SetActive(false);
         loseUI.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -26,6 +28,7 @@ public class rangeUIControl : MonoBehaviour
             Cursor.visible = false;
             disESC = false;
             winUI.SetActive(false);
+            ReloadUI.SetActive(true);
             Time.timeScale = 1f;
         }
         else
@@ -33,6 +36,7 @@ public class rangeUIControl : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             disESC = true;
+            ReloadUI.SetActive(false);
             winUI.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -45,6 +49,7 @@ public class rangeUIControl : MonoBehaviour
             if (pauseUI.activeSelf)
             {
                 pauseUI.SetActive(false);
+                ReloadUI.SetActive(true);
                 Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -53,6 +58,7 @@ public class rangeUIControl : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                ReloadUI.SetActive(false);
                 pauseUI.SetActive(true);
                 Time.timeScale = 0f;
             }
@@ -71,7 +77,6 @@ public class rangeUIControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !disESC)
         {
-            Debug.Log("here");
             showPulseUI();
         }
     }

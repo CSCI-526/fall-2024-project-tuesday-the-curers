@@ -77,7 +77,6 @@ public class playerState : MonoBehaviour
         {
             if (timmer >= dealy)
             {
-                Debug.Log("here");
                 TakeDamage(10);
                 timmer = 0;
             }
