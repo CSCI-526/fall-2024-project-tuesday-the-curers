@@ -11,6 +11,7 @@ TagManager:
   - Anti
   - wayPoints
   - Other
+  - Breakable wall
   layers:
   - Default
   - TransparentFX

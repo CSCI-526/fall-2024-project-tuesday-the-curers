@@ -60,13 +60,24 @@ public class playerState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if(timmer2 > delay2)
+
+            if (timmer2 > delay2)
             {
-                TakeDamage(10);
-                timmer2 = 0;
-                timmer = 0;
+                if (other.GetComponent<BigBoss>() != null)
+                {
+                    TakeDamage(20);
+                    timmer2 = 0;
+                    timmer = 0;
+                }
+                else { 
+                   TakeDamage(10);
+                   timmer2 = 0;
+                   timmer = 0;
+                }
+                
             }
         }
     }
@@ -77,8 +88,18 @@ public class playerState : MonoBehaviour
         {
             if (timmer >= dealy)
             {
-                TakeDamage(10);
-                timmer = 0;
+                if (other.GetComponent<BigBoss>() != null)
+                {
+                    TakeDamage(20);
+                    timmer = 0;
+
+                }
+                else 
+                { 
+                    TakeDamage(10);
+                    timmer = 0; 
+                }
+               
             }
             timmer2 = 0;
         }

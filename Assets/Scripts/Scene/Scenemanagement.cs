@@ -30,4 +30,10 @@ public class Scenemanagement : MonoBehaviour
         Time.timeScale = 1f;
         Application.Quit();
     }
+
+    public void LoadLevel2()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(4);
+    }
 }
