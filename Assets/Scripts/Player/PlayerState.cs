@@ -81,4 +81,9 @@ public class playerState : MonoBehaviour
             timmer += Time.deltaTime;
         }
     }
+    public void AddHealth(int amount)
+    {
+        health = Mathf.Min(health + amount, Maxhealth); // Add health, clamping to maxHealth.
+        Debug.Log("Health increased! Current Health: " + health);
+    }
 }

@@ -45,9 +45,9 @@ public class HUDManager : MonoBehaviour
         }
         else if(curedCount.Instance.count >= curedCount.Instance.level_mission) 
         {
-            MissionBoard.text = $"{"Mission accomplish, Leave the area."}";
+            MissionBoard.text = $"{"Mission accomplish, Find yellow door of the apartment to leave."}";
         }
-        statistic.text = $"{"Cured: " + curedCount.Instance.count + "\n" + "Killed: " + curedCount.Instance.killed }";
+        statistic.text = $"{"Cured: " + curedCount.Instance.count + "\n" + "Killed: " + curedCount.Instance.killed}";
         antiNum.text = $"{WeaponManager.Instance.totalAntis}";
         Weapon actived = WeaponManager.Instance.activeWeaponSlot.GetComponentInChildren<Weapon>();
         Weapon unacted = GetUnActivedSlot().GetComponentInChildren<Weapon>();
