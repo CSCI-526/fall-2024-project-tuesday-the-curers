@@ -8,7 +8,7 @@ public class SafeHoiuseHUD : MonoBehaviour
 
     private void Update()
     {
-        Money.text = $"{"$ " + PlayerResource.Instance.GetPlayermonney() + "\nPistol Ammo: " + PlayerResource.Instance.GetPlayerPis_ammo() + "\nRifel Ammo: " + PlayerResource.Instance.GetPlayerRif_ammo()}";
+        Money.text = $"{"$ " + PlayerResource.Instance.GetPlayermonney() + "\nPistol Ammo: " + PlayerResource.Instance.GetPlayerPis_ammo() + "\nRifel Ammo: " + PlayerResource.Instance.GetPlayerRif_ammo() + "\nAntidote: " + PlayerResource.Instance.GetPlayeranti()}";
 
     }
 }
