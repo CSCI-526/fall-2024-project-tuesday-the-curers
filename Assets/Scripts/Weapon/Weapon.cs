@@ -58,7 +58,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = true;
         BurstBulletLeft = bulletPerBurst;
-        bulletLeft = magazineSize;
+        bulletLeft = 0;
     }
 
     private IEnumerator DestoryBulletAfterTime(GameObject bullet, float bulletPrefabLifeTime)
@@ -114,6 +114,18 @@ public class Weapon : MonoBehaviour
     private void FireWeapon()
     {
         bulletLeft--;
+
+        if (PlayerResource.Instance != null)
+        {
+            if(thisweapon == WeaponModel.Pistol)
+            {
+                PlayerResource.Instance.Dec_Pis(1);
+            }
+            if(thisweapon == WeaponModel.Rifel)
+            {
+                PlayerResource.Instance.Dec_Rif(1);
+            }
+        }
 
         readyToShoot = false;
 

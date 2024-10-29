@@ -10,21 +10,22 @@ public class Scenemanagement : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
-    public void LoadLevelSelection()
+    public void LoadTutorial()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
-    public void LoadLevel1()
+    public void LoadSafehouse()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(2);
     }
-    public void LoadTutorial()
+    public void LoadLevel1()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(3);
     }
+    
     public void onQuitButton()
     {
         Time.timeScale = 1f;

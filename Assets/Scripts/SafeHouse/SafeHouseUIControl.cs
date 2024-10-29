@@ -2,34 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rangeUIControl : MonoBehaviour
+public class SafeHouseUIControl : MonoBehaviour
 {
-    bool disESC = false;
-    public GameObject pauseUI;
-    public GameObject loseUI;
-    public GameObject winUI;
-    public GameObject ReloadUI;
-    public GameObject STAUI;
-    public void showLoseUI()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        disESC = true;
-        ReloadUI.SetActive(false);
-        loseUI.SetActive(true);
-        Time.timeScale = 0f;
-    }
+    public static SafeHouseUIControl Instance { get; set; }
 
-    public void showWinUI()
+    bool disESC = false;
+    public bool disE = false;
+    public GameObject pauseUI;
+    public GameObject LevelUI;
+
+
+    public void showLevelSelection()
     {
-        
-        if (winUI.activeSelf)
+
+        if (LevelUI.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             disESC = false;
-            winUI.SetActive(false);
-            ReloadUI.SetActive(true);
+            disE = false;
+            LevelUI.SetActive(false);
             Time.timeScale = 1f;
         }
         else
@@ -37,8 +29,8 @@ public class rangeUIControl : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             disESC = true;
-            ReloadUI.SetActive(false);
-            winUI.SetActive(true);
+            disE=true;
+            LevelUI.SetActive(true);
             Time.timeScale = 0f;
         }
     }
@@ -50,34 +42,31 @@ public class rangeUIControl : MonoBehaviour
             if (pauseUI.activeSelf)
             {
                 pauseUI.SetActive(false);
-                ReloadUI.SetActive(true);
                 Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                disE=false;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                ReloadUI.SetActive(false);
                 pauseUI.SetActive(true);
                 Time.timeScale = 0f;
+                disE = true;
             }
         }
     }
 
-    public void showSTAUI()
+    private void Awake()
     {
-        Debug.Log("here1");
-        if (winUI.activeSelf)
+        if (Instance != null && Instance != this)
         {
-            Debug.Log("here2");
-            winUI.SetActive(false);
-            STAUI.SetActive(true);
+            Destroy(gameObject);
         }
         else
         {
-            return;
+            Instance = this;
         }
     }
 
@@ -85,12 +74,7 @@ public class rangeUIControl : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseUI.SetActive(false);
-        loseUI.SetActive(false);
-        winUI.SetActive(false);
-        if(STAUI != null)
-        {
-            STAUI.SetActive(false);
-        }
+        LevelUI.SetActive(false);
     }
 
     private void Update()
