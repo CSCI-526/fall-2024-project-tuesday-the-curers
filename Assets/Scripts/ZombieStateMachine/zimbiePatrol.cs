@@ -11,15 +11,26 @@ public class zimbiePatrol : StateMachineBehaviour
     Transform player;
     NavMeshAgent agent;
 
-    public float detectionArea = 10f;
+    //public float detectionArea = 10f;
     public float patrolSpeed = 2.0f;
-    
+
+    // day and night detect
+    DayNightCycle dayNightCycle;
+    public float dayDetectionArea = 10f;
+    public float nightDetectionArea = 20f;
+    private float detectionArea;
+
+
+
     List<Transform> waypointList = new List<Transform>();
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
+
+        //dayand night
+        dayNightCycle = FindObjectOfType<DayNightCycle>();
 
         agent.speed = patrolSpeed;
         timer = 0;
@@ -50,6 +61,18 @@ public class zimbiePatrol : StateMachineBehaviour
         }
 
         // To Chase
+
+        //day and night switch
+        if (dayNightCycle != null && dayNightCycle.IsNight())
+        {
+            detectionArea = nightDetectionArea;
+        }
+        else
+        {
+            detectionArea = dayDetectionArea;
+        }
+
+
         float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
         if (distanceFromPlayer < detectionArea)
         {

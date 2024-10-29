@@ -235,11 +235,17 @@ public class SpecialAgent : MonoBehaviour
     public Transform target;
     public int attackDamage = 10;
     public float attackInterval = 2f;
-    public float attackRange = 2f;
 
+    //public float dayAttackRange = 2f;//day attck range
+    //public float nightAttackRange = 10f; // night attack range
+    //private float attackRange; // store dayattckrange or nightattack range
+
+    private float attackRange = 2f;
     private float attackTimer;
+
     private NavMeshAgent navMeshAgent;
 
+    private DayNightCycle dayNightCycle; //  DayNightCycle
     void Start()
     {
         health = Maxhealth;
@@ -247,6 +253,10 @@ public class SpecialAgent : MonoBehaviour
         attackTimer = attackInterval;
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        // check DayNightCycle
+        dayNightCycle = FindObjectOfType<DayNightCycle>();
+
 
         if (target != null && navMeshAgent != null)
         {
@@ -261,6 +271,19 @@ public class SpecialAgent : MonoBehaviour
     void Update()
     {
         HealthCheck();
+
+
+        //// day or night to choose attackrange
+        //if (dayNightCycle != null && dayNightCycle.IsNight())
+        //{
+        //    attackRange = nightAttackRange;
+        //}
+        //else
+        //{
+        //    attackRange = dayAttackRange;
+        //}
+
+        //navMeshAgent.stoppingDistance = attackRange; // stop update distance form navmesh
 
         if (target != null)
         {

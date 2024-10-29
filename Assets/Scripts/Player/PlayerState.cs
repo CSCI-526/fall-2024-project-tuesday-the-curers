@@ -18,12 +18,18 @@ public class playerState : MonoBehaviour
     private float timmer = 0;
     private float timmer2 = 0;
 
+
+    private DayNightCycle dayNightCycle;
     void Start()
     {
 
         // Health ini
         health = Maxhealth;
         slider.value = calHealth();
+
+        // check DayNightCycle
+        dayNightCycle = FindObjectOfType<DayNightCycle>();
+
     }
 
     public void TakeDamage(int damage)
@@ -74,7 +80,12 @@ public class playerState : MonoBehaviour
                 }
                 else
                 {
-                    TakeDamage(10);
+                    //TakeDamage(10);
+
+                    int damage = dayNightCycle.IsNight() ? 50 : 10; 
+                    TakeDamage(damage);
+
+
                     timmer2 = 0;
                     timmer = 0;
                 }
@@ -97,7 +108,12 @@ public class playerState : MonoBehaviour
                 }
                 else
                 {
-                    TakeDamage(10);
+                    //TakeDamage(10);
+                    int damage = dayNightCycle.IsNight() ? 50 : 10; 
+                    TakeDamage(damage);
+
+
+
                     timmer = 0;
                 }
 

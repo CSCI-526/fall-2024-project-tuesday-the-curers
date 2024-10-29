@@ -25,4 +25,14 @@ public class DayNightCycle : MonoBehaviour
         directionalLight.color = lightColor.Evaluate(timeOfDay);
         directionalLight.intensity = lightIntensityCurve.Evaluate(timeOfDay);
     }
+
+    //check if in the night
+    public bool IsNight()
+    {
+        float sunAngle = directionalLight.transform.rotation.eulerAngles.x;
+        return sunAngle > 180f && sunAngle < 360f; // 
+    }
+
+
+
 }
