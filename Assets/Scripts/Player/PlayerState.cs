@@ -12,7 +12,7 @@ public class playerState : MonoBehaviour
     public Slider slider;
 
     public GameObject lossUI;
-    
+
     public float dealy = 1.5f;
     public float delay2 = 1f;
     private float timmer = 0;
@@ -72,12 +72,13 @@ public class playerState : MonoBehaviour
                     timmer2 = 0;
                     timmer = 0;
                 }
-                else { 
-                   TakeDamage(10);
-                   timmer2 = 0;
-                   timmer = 0;
+                else
+                {
+                    TakeDamage(10);
+                    timmer2 = 0;
+                    timmer = 0;
                 }
-                
+
             }
         }
     }
@@ -94,12 +95,12 @@ public class playerState : MonoBehaviour
                     timmer = 0;
 
                 }
-                else 
-                { 
+                else
+                {
                     TakeDamage(10);
-                    timmer = 0; 
+                    timmer = 0;
                 }
-               
+
             }
             timmer2 = 0;
         }
