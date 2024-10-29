@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,6 +17,13 @@ public class playerState : MonoBehaviour
     public float delay2 = 1f;
     private float timmer = 0;
     private float timmer2 = 0;
+    private float outBounddamage = 100f;
+
+    public GameObject gameOverUI; // 拖入 GameOver UI
+    public float maxZCoordinate = 24f; // 超过此 Z 坐标时触发 GameOver
+
+
+    
 
     void Start()
     {
@@ -55,7 +62,11 @@ public class playerState : MonoBehaviour
     {
         HealthCheck();
         timmer2 += Time.deltaTime;
-        timmer += Time.deltaTime;
+        timmer += Time.deltaTime;  
+        if (transform.position.z > maxZCoordinate)
+        {
+            health -= outBounddamage;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -104,4 +115,5 @@ public class playerState : MonoBehaviour
             timmer2 = 0;
         }
     }
+   
 }
