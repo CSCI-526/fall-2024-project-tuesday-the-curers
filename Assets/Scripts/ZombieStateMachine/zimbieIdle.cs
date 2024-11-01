@@ -26,8 +26,9 @@ public class zimbieIdle : StateMachineBehaviour
             animator.SetBool("isPatroling", true);
         }
 
+        Zombie zombieComponent = animator.GetComponent<Zombie>();
         float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
-        if(distanceFromPlayer < detectionAreaRadius)
+        if(distanceFromPlayer < detectionAreaRadius && zombieComponent != null && zombieComponent.isIlluminated)
         {
             animator.SetBool("isChasing", true);
         }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -48,19 +48,21 @@ public class zimbiePatrol : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             agent.SetDestination(waypointList[Random.Range(0, waypointList.Count)].position);
         }
 
         // To idle
         timer += Time.deltaTime;
-        if(timer > patrolingTime)
+        if (timer > patrolingTime)
         {
             animator.SetBool("isPatroling", false);
         }
 
         // To Chase
+        Zombie zombieComponent = animator.GetComponent<Zombie>();//改动
+
 
         //day and night switch
         if (dayNightCycle != null && dayNightCycle.IsNight())
@@ -74,7 +76,7 @@ public class zimbiePatrol : StateMachineBehaviour
 
 
         float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
-        if (distanceFromPlayer < detectionArea)
+        if (distanceFromPlayer < detectionArea && zombieComponent != null && zombieComponent.isIlluminated)//改动
         {
             animator.SetBool("isChasing", true);
         }
