@@ -60,9 +60,7 @@ public class zimbiePatrol : StateMachineBehaviour
             animator.SetBool("isPatroling", false);
         }
 
-        // To Chase
-        Zombie zombieComponent = animator.GetComponent<Zombie>();//改动
-
+      
 
         //day and night switch
         if (dayNightCycle != null && dayNightCycle.IsNight())
@@ -76,7 +74,7 @@ public class zimbiePatrol : StateMachineBehaviour
 
 
         float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
-        if (distanceFromPlayer < detectionArea && zombieComponent != null && zombieComponent.isIlluminated)//改动
+        if (distanceFromPlayer < detectionArea)
         {
             animator.SetBool("isChasing", true);
         }
