@@ -10,6 +10,7 @@ public class zimbiePatrol : StateMachineBehaviour
 
     Transform player;
     NavMeshAgent agent;
+    ZombieState zstate;
 
     public float detectionArea = 10f;
     public float patrolSpeed = 2.0f;
@@ -20,6 +21,13 @@ public class zimbiePatrol : StateMachineBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
+        zstate = animator.GetComponent<ZombieState>();
+
+        if (zstate.is_night)
+        {
+            detectionArea = 15f;
+            patrolSpeed = 4.0f;
+        }
 
         agent.speed = patrolSpeed;
         timer = 0;

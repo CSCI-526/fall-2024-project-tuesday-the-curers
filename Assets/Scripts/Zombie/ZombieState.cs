@@ -12,11 +12,13 @@ public class ZombieState : MonoBehaviour
     public GameObject healthbar;
     public Slider slider;
 
+    public bool is_night = false;
+
     // Color Controll
     private float timmer = 30f;
     private Renderer objectRenderer;
     public int zombie_state = 0;
-    private Color[] colors = { Color.green, new Color(1f, 0.5f, 0f), Color.red };
+    private Color[] colors = {new Color(1f, 0.5f, 0f), Color.red ,new Color(0.5f, 0f, 0.5f) };
 
     // Movement Control
     private Animator animator;
@@ -97,5 +99,9 @@ public class ZombieState : MonoBehaviour
     void Update()
     {
         HealthCheck();
+        if (DayNightCycle.Instance != null)
+        {
+            is_night = DayNightCycle.Instance.IsNight();
+        }
     }
 }

@@ -41,6 +41,8 @@ public class Weapon : MonoBehaviour
     public Vector3 spawnRotation;
     public int Weapondamage;
 
+    private bool ini = true;
+
     public enum WeaponModel
     {
         Pistol,
@@ -163,7 +165,11 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-
+        if (ini)
+        {
+            ReloadCompleted();
+            ini = false;
+        }
         if (isActiveWeapon)
         {
             if (currentMode == ShootingMode.Auto)

@@ -8,6 +8,7 @@ public class Scenemanagement : MonoBehaviour
     public void LoadStart()
     {
         Time.timeScale = 1f;
+        PlayerResource.Instance.ResteData();
         SceneManager.LoadScene(0);
     }
     public void LoadTutorial()
@@ -25,7 +26,13 @@ public class Scenemanagement : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(3);
     }
-    
+
+    public void LoadLevel2()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(4);
+    }
+
     public void onQuitButton()
     {
         Time.timeScale = 1f;

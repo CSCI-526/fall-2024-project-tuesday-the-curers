@@ -10,6 +10,13 @@ public class PlayerResource : MonoBehaviour
     private static int Rif_ammo = 60;
     private static int Anti = 6;
 
+    public void ResteData()
+    {
+        currency = 100;
+        Pis_ammo = 14;
+        Rif_ammo = 60;
+        Anti = 6;
+    }
     public int GetPlayermonney()
     {
         return currency;

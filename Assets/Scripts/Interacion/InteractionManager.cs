@@ -69,6 +69,10 @@ public class InteractionManager : MonoBehaviour
                 {
                     SafeHouseUIControl.Instance.showLevelSelection();
                 }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && SafeHouseUIControl.Instance.disE == false)
+                {
+                    SafeHouseUIControl.Instance.showLevelSelection();
+                }
             }
 
             if (objectHitByRaycast.CompareTag("Rbox"))
@@ -76,6 +80,13 @@ public class InteractionManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
                 {
                     if (PlayerResource.Instance.Dec_money(30,0))
+                    {
+                        PlayerResource.Instance.Inc_Rif(30);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(30, 0))
                     {
                         PlayerResource.Instance.Inc_Rif(30);
                     }
@@ -91,11 +102,25 @@ public class InteractionManager : MonoBehaviour
                         PlayerResource.Instance.Inc_Pis(7);
                     }
                 }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(20, 0))
+                    {
+                        PlayerResource.Instance.Inc_Pis(7);
+                    }
+                }
             }
 
             if (objectHitByRaycast.CompareTag("Abox"))
             {
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(10, 0))
+                    {
+                        PlayerResource.Instance.Inc_Ant(1);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
                 {
                     if (PlayerResource.Instance.Dec_money(10, 0))
                     {

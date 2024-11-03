@@ -26,9 +26,15 @@ public class playerState : MonoBehaviour
         slider.value = calHealth();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        health -= damage;
+        if (DayNightCycle.Instance != null && DayNightCycle.Instance.IsNight())
+        {
+            health -= 20;
+            return;
+        }
+        health -= 10;
+        return;
     }
 
     private float calHealth()
@@ -64,7 +70,7 @@ public class playerState : MonoBehaviour
         {
             if(timmer2 > delay2)
             {
-                TakeDamage(10);
+                TakeDamage();
                 timmer2 = 0;
                 timmer = 0;
             }
@@ -77,7 +83,7 @@ public class playerState : MonoBehaviour
         {
             if (timmer >= dealy)
             {
-                TakeDamage(10);
+                TakeDamage();
                 timmer = 0;
             }
             timmer2 = 0;
