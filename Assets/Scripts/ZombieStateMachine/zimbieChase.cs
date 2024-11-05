@@ -28,15 +28,24 @@ public class zimbieChase : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
 
-        //
+      if (agent == null || !agent.isOnNavMesh || !agent.enabled)
+        {
+            Debug.LogWarning("NavMeshAgent is not enabled or not on a NavMesh. Skipping chase setup.");
+            return;
+        }
         dayNightCycle = FindObjectOfType<DayNightCycle>();
 
         agent.speed = chaseSpeed;
+        
     }
 
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+       if (agent == null || !agent.isOnNavMesh || !agent.enabled) return;
+        
+       
+
         agent.SetDestination(player.position);
         animator.transform.LookAt(player);
 

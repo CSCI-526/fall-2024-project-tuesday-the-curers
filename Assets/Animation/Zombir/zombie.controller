@@ -41,6 +41,7 @@ MonoBehaviour:
   patrolSpeed: 2
   dayDetectionArea: 10
   nightDetectionArea: 20
+  initialWaitTime: 30
 --- !u!1101 &-6514317071226787840
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

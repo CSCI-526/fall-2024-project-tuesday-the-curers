@@ -22,6 +22,9 @@ public class zimbiePatrol : StateMachineBehaviour
 
 
 
+
+
+
     List<Transform> waypointList = new List<Transform>();
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -29,11 +32,20 @@ public class zimbiePatrol : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
 
+        if (agent == null || !agent.isOnNavMesh || !agent.enabled)
+        {
+            Debug.LogWarning("NavMeshAgent is not enabled or not on a NavMesh. Skipping patrol setup.");
+            return;
+        }
+
+       
+        
         //dayand night
         dayNightCycle = FindObjectOfType<DayNightCycle>();
 
         agent.speed = patrolSpeed;
         timer = 0;
+
 
         GameObject waypoint = animator.GetComponent<zombie_nav>().nvob;
         foreach (Transform t in waypoint.transform)
@@ -48,6 +60,11 @@ public class zimbiePatrol : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (agent == null || !agent.isOnNavMesh || !agent.enabled) return;
+
+
+       
+
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             agent.SetDestination(waypointList[Random.Range(0, waypointList.Count)].position);
@@ -79,6 +96,9 @@ public class zimbiePatrol : StateMachineBehaviour
             animator.SetBool("isChasing", true);
         }
     }
+
+  
+
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

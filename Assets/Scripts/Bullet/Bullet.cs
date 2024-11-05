@@ -17,15 +17,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Breakable wall"))
-        {
-            WallHealth wallHealth = collision.gameObject.GetComponent<WallHealth>();
-            if (wallHealth != null)
-            {
-                wallHealth.TakeDamage(bulletDamage);
-            }
-            Destroy(gameObject);
-        }
+       
 
         /* if (collision.gameObject.CompareTag("Enemy"))
          {
@@ -47,11 +39,7 @@ public class Bullet : MonoBehaviour
                 specialAgent.TakeDamage(bulletDamage);
             }
 
-            BigBoss bigBoss = collision.gameObject.GetComponent<BigBoss>();
-            if (bigBoss != null)
-            {
-                bigBoss.TakeDamage(bulletDamage);
-            }
+            
 
             Destroy(gameObject);
         }
