@@ -11,7 +11,10 @@ TagManager:
   - Anti
   - wayPoints
   - Other
-  - Breakable wall
+  - SPUI
+  - Pbox
+  - Rbox
+  - Abox
   layers:
   - Default
   - TransparentFX

@@ -9,61 +9,35 @@ public class zimbieChase : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform player;
-
-    // dayand night
-    DayNightCycle dayNightCycle;
+    ZombieState zstate;
 
     public float chaseSpeed = 6f;
 
-    //public float stopChasingDIstance = 15;
+    public float stopChasingDIstance = 15;
     public float attackingDistance = 2f;
-
-    //
-    public float dayStopChasingDistance = 15f;
-    public float nightStopChasingDistance = 25f;
-    private float stopChasingDIstance;
-
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
+        zstate = animator.GetComponent<ZombieState>();
 
-      if (agent == null || !agent.isOnNavMesh || !agent.enabled)
+        if (zstate.is_night)
         {
-            Debug.LogWarning("NavMeshAgent is not enabled or not on a NavMesh. Skipping chase setup.");
-            return;
+            chaseSpeed = 8.0f;
         }
-        dayNightCycle = FindObjectOfType<DayNightCycle>();
 
         agent.speed = chaseSpeed;
-        
     }
 
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       if (agent == null || !agent.isOnNavMesh || !agent.enabled) return;
-        
-       
-
         agent.SetDestination(player.position);
         animator.transform.LookAt(player);
 
         float distanceformPlayer = Vector3.Distance(player.position, animator.transform.position);
 
-        //
-      
-        if (dayNightCycle != null && dayNightCycle.IsNight())
-        {
-            stopChasingDIstance = nightStopChasingDistance;
-        }
-        else
-        {
-            stopChasingDIstance = dayStopChasingDistance;
-        }
-
-
-        if (distanceformPlayer > stopChasingDIstance)
+        if(distanceformPlayer > stopChasingDIstance)
         {
             animator.SetBool("isChasing", false);
         }

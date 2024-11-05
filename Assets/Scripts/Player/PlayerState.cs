@@ -12,29 +12,29 @@ public class playerState : MonoBehaviour
     public Slider slider;
 
     public GameObject lossUI;
-
+    
     public float dealy = 1.5f;
     public float delay2 = 1f;
     private float timmer = 0;
     private float timmer2 = 0;
 
-
-    private DayNightCycle dayNightCycle;
     void Start()
     {
 
         // Health ini
         health = Maxhealth;
         slider.value = calHealth();
-
-        // check DayNightCycle
-        dayNightCycle = FindObjectOfType<DayNightCycle>();
-
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        health -= damage;
+        if (DayNightCycle.Instance != null && DayNightCycle.Instance.IsNight())
+        {
+            health -= 20;
+            return;
+        }
+        health -= 10;
+        return;
     }
 
     private float calHealth()
@@ -66,30 +66,13 @@ public class playerState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.CompareTag("Enemy"))
         {
-
-            if (timmer2 > delay2)
+            if(timmer2 > delay2)
             {
-                if (other.GetComponent<BigBoss>() != null)
-                {
-                    TakeDamage(20);
-                    timmer2 = 0;
-                    timmer = 0;
-                }
-                else
-                {
-                    //TakeDamage(10);
-
-                    int damage = dayNightCycle.IsNight() ? 50 : 10; 
-                    TakeDamage(damage);
-
-
-                    timmer2 = 0;
-                    timmer = 0;
-                }
-
+                TakeDamage();
+                timmer2 = 0;
+                timmer = 0;
             }
         }
     }
@@ -100,23 +83,8 @@ public class playerState : MonoBehaviour
         {
             if (timmer >= dealy)
             {
-                if (other.GetComponent<BigBoss>() != null)
-                {
-                    TakeDamage(20);
-                    timmer = 0;
-
-                }
-                else
-                {
-                    //TakeDamage(10);
-                    int damage = dayNightCycle.IsNight() ? 50 : 10; 
-                    TakeDamage(damage);
-
-
-
-                    timmer = 0;
-                }
-
+                TakeDamage();
+                timmer = 0;
             }
             timmer2 = 0;
         }

@@ -31,6 +31,18 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         activeWeaponSlot = weaponSlots[0];
+        if(PlayerResource.Instance != null)
+        {
+            totalRifelAmmo = PlayerResource.Instance.GetPlayerRif_ammo();
+            totalPistolAmmo = PlayerResource.Instance.GetPlayerPis_ammo();
+            totalAntis = PlayerResource.Instance.GetPlayeranti();
+        }
+        else
+        {
+            totalRifelAmmo = 300;
+            totalPistolAmmo = 200;
+            totalAntis = 99;
+        }
     }
     private void Update()
     {
@@ -107,19 +119,6 @@ public class WeaponManager : MonoBehaviour
         {
             Weapon newWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<Weapon>();
             newWeapon.isActiveWeapon = true;
-        }
-    }
-
-    internal void PickupAmmo(Ammobox name)
-    {
-        switch (name.ammotype)
-        {
-            case Ammobox.AmmoType.PistolAmmo:
-                totalPistolAmmo += name.ammoAmount;
-                break;
-            case Ammobox.AmmoType.RifleAmmo:
-                totalRifelAmmo += name.ammoAmount;
-                break;
         }
     }
 
