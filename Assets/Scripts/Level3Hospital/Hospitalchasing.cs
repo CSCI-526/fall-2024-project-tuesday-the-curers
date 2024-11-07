@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿// HospitalChasing.cs
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Hospitalchasing : StateMachineBehaviour
+public class HospitalChasing : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform player;
@@ -52,6 +53,11 @@ public class Hospitalchasing : StateMachineBehaviour
             {
                 animator.SetBool("isChasing", false);
             }
+        }
+        else
+        {
+            // If not illuminated, return to patrolling state
+            animator.SetBool("isChasing", false);
         }
     }
 

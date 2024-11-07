@@ -1,24 +1,27 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ZombieState : MonoBehaviour
 {
     // Health control
     public float health;
     public float Maxhealth;
-    public GameObject healthbar;
-    public Slider slider;
+    public GameObject healthbar; 
+    public Slider slider; 
 
     public bool is_night = false;
 
-    // Color Controll
+    public Light flashlight; 
+    public float detectionDistance = 25f; 
+
     private float timmer = 30f;
     private Renderer objectRenderer;
     public int zombie_state = 0;
-    private Color[] colors = {new Color(1f, 0.5f, 0f), Color.red ,new Color(0.5f, 0f, 0.5f) };
+    private Color[] colors = { new Color(1f, 0.5f, 0f), Color.red, new Color(0.5f, 0f, 0.5f) };
 
     // Movement Control
     private Animator animator;
@@ -26,17 +29,29 @@ public class ZombieState : MonoBehaviour
 
     void Start()
     {
-        // Color ini
         objectRenderer = GetComponent<Renderer>();
         objectRenderer.material.color = colors[zombie_state];
 
-        // Health ini
         health = Maxhealth;
         slider.value = calHealth();
 
-        // State ini
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            if (healthbar != null)
+            {
+                healthbar.SetActive(false); 
+            }
+        }
+        else
+        {
+            if (healthbar != null)
+            {
+                healthbar.SetActive(true);
+            }
+        }
     }
 
     private void colordeeper()
@@ -58,7 +73,7 @@ public class ZombieState : MonoBehaviour
             timmer = 10f;
             health = Maxhealth;
         }
-        else if(zombie_state == 0)
+        else if (zombie_state == 0)
         {
             curedCount.Instance.count++;
             Destroy(gameObject);
@@ -83,7 +98,6 @@ public class ZombieState : MonoBehaviour
             colordeeper();
         }
 
-  
         if (health <= 0)
         {
             curedCount.Instance.killed++;
@@ -102,6 +116,38 @@ public class ZombieState : MonoBehaviour
         if (DayNightCycle.Instance != null)
         {
             is_night = DayNightCycle.Instance.IsNight();
+        }
+
+        CheckFlashlight(); 
+    }
+
+    private void CheckFlashlight()
+    {
+        if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            if (flashlight != null && flashlight.enabled)
+            {
+                Vector3 directionToZombie = (transform.position - flashlight.transform.position).normalized;
+                Ray ray = new Ray(flashlight.transform.position, directionToZombie);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, detectionDistance))
+                {
+                    if (hit.collider.gameObject == gameObject)
+                    {
+                        healthbar.SetActive(true);
+                        return;
+                    }
+                }
+            }
+            healthbar.SetActive(false); 
+        }
+        else
+        {
+            if (healthbar != null)
+            {
+                healthbar.SetActive(true);
+            }
         }
     }
 }

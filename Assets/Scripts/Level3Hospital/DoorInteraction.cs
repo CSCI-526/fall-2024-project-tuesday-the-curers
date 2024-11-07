@@ -20,23 +20,24 @@ public class DoorInteraction : MonoBehaviour
     {
         targetRotation = transform.rotation;
 
-        if (interactionPrompt != null)
+       /* if (interactionPrompt != null)
         {
             interactionPrompt.gameObject.SetActive(false);
-        }
+        }*/
     }
 
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
 
-        if (interactionPrompt != null && distanceToPlayer <= interactionDistance && !hasPromptShown)
+        /*if (interactionPrompt != null && distanceToPlayer <= interactionDistance && !hasPromptShown)
         {
             StartCoroutine(ShowPromptOnce());
             hasPromptShown = true;
 
 
-        }
+        }*/
+     
 
         if (distanceToPlayer <= interactionDistance && Input.GetKeyDown(KeyCode.E))
         {
@@ -47,12 +48,12 @@ public class DoorInteraction : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
-    IEnumerator ShowPromptOnce()
+   /* IEnumerator ShowPromptOnce()
     {
         interactionPrompt.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(3);
 
         interactionPrompt.gameObject.SetActive(false);
-    }
+    }*/
 }
