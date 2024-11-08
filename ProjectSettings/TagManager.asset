@@ -15,7 +15,6 @@ TagManager:
   - Pbox
   - Rbox
   - Abox
-  - CollectibleBlock
   layers:
   - Default
   - TransparentFX

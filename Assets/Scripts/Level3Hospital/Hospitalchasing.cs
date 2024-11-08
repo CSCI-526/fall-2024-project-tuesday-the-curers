@@ -11,7 +11,7 @@ public class HospitalChasing : StateMachineBehaviour
 
     public float chaseSpeed = 6f;
     public float attackingDistance = 2f;
-    public float stopChasingDistance = 15f;
+    public float stopChasingDistance = 50f;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
