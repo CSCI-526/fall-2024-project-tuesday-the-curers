@@ -12,11 +12,16 @@ public class ZombieState : MonoBehaviour
     public GameObject healthbar;
     public Slider slider;
 
+    public bool is_night = false;
+    public bool sp = false;
+    public bool ndmg = false;
+    public bool boss = false;
+
     // Color Controll
-    private float timmer = 30f;
+    public float timmer = 30f;
     private Renderer objectRenderer;
     public int zombie_state = 0;
-    private Color[] colors = { Color.green, new Color(1f, 0.5f, 0f), Color.red };
+    private Color[] colors = {new Color(1f, 0.5f, 0f), Color.red ,new Color(0.5f, 0f, 0.5f) };
 
     // Movement Control
     private Animator animator;
@@ -26,11 +31,24 @@ public class ZombieState : MonoBehaviour
     {
         // Color ini
         objectRenderer = GetComponent<Renderer>();
-        objectRenderer.material.color = colors[zombie_state];
+        if (boss)
+        {
+            objectRenderer.material.color = new Color(0f, 0.5f, 0f, 1f);
+        }
+        else
+        {
+            objectRenderer.material.color = colors[zombie_state];
+        }
+        
 
         // Health ini
-        health = Maxhealth;
+        if(sp == false)
+        {
+            health = Maxhealth;
+            
+        }
         slider.value = calHealth();
+
 
         // State ini
         animator = GetComponent<Animator>();
@@ -65,6 +83,15 @@ public class ZombieState : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (boss)
+        {
+            return;
+        }
+        if (ndmg && health <= 50)
+        {
+            return;
+
+        }
         health -= damage;
     }
 
@@ -76,7 +103,7 @@ public class ZombieState : MonoBehaviour
     private void HealthCheck()
     {
         timmer -= Time.deltaTime;
-        if (timmer <= 0)
+        if (timmer <= 0 && !boss)
         {
             colordeeper();
         }
@@ -97,5 +124,9 @@ public class ZombieState : MonoBehaviour
     void Update()
     {
         HealthCheck();
+        if (DayNightCycle.Instance != null)
+        {
+            is_night = DayNightCycle.Instance.IsNight();
+        }
     }
 }

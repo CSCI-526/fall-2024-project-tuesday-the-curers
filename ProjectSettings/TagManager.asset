@@ -11,6 +11,14 @@ TagManager:
   - Anti
   - wayPoints
   - Other
+  - SPUI
+  - Pbox
+  - Rbox
+  - Abox
+  - spzib
+  - TRbox
+  - TPbox
+  - TAbox
   layers:
   - Default
   - TransparentFX

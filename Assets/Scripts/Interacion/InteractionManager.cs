@@ -41,32 +41,137 @@ public class InteractionManager : MonoBehaviour
                 }
             }
 
-
-            // Ammobox
-            if (objectHitByRaycast.GetComponent<Ammobox>())
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    hoveredAmmobox = objectHitByRaycast.gameObject.GetComponent<Ammobox>();
-                    WeaponManager.Instance.PickupAmmo(hoveredAmmobox);
-                    Destroy(objectHitByRaycast.gameObject);
-                }
-            }
-
             if (objectHitByRaycast.CompareTag("Enemy") || objectHitByRaycast.CompareTag("Other"))
             {
+                if(objectHitByRaycast.GetComponent<assist>() != null)
+                {
+                    objectHitByRaycast.GetComponent<assist>().show = true;
+                }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if(objectHitByRaycast.GetComponent<ZombieState>().health <= 50 && WeaponManager.Instance.UseAnti())
                     {
+                        if(PlayerResource.Instance != null)
+                        {
+                            PlayerResource.Instance.Dec_Ant(1);
+                        }
                         objectHitByRaycast.GetComponent<ZombieState>().colorlighter();
                     }
                     if (objectHitByRaycast.GetComponent<ZombieState>().health > 50 && WeaponManager.Instance.UseAnti())
                     {
-                        
+                        if (PlayerResource.Instance != null)
+                        {
+                            PlayerResource.Instance.Dec_Ant(1);
+                        }
                     }
                 }
             }
+
+            if (objectHitByRaycast.CompareTag("SPUI"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && SafeHouseUIControl.Instance.disE ==false)
+                {
+                    SafeHouseUIControl.Instance.showLevelSelection();
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && SafeHouseUIControl.Instance.disE == false)
+                {
+                    SafeHouseUIControl.Instance.showLevelSelection();
+                }
+            }
+
+            if (objectHitByRaycast.CompareTag("Rbox"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(30,0))
+                    {
+                        PlayerResource.Instance.Inc_Rif(30);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(30, 0))
+                    {
+                        PlayerResource.Instance.Inc_Rif(30);
+                    }
+                }
+            }
+
+            if (objectHitByRaycast.CompareTag("Pbox"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(20, 0))
+                    {
+                        PlayerResource.Instance.Inc_Pis(7);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(20, 0))
+                    {
+                        PlayerResource.Instance.Inc_Pis(7);
+                    }
+                }
+            }
+
+            if (objectHitByRaycast.CompareTag("Abox"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(10, 0))
+                    {
+                        PlayerResource.Instance.Inc_Ant(1);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Dec_money(10, 0))
+                    {
+                        PlayerResource.Instance.Inc_Ant(1);
+                    }
+                }
+            }
+
+            if (objectHitByRaycast.CompareTag("TRbox"))
+            {
+                if(box_assist.Instance != null)
+                {
+                    box_assist.Instance.rbox = true;
+                }
+                if (Input.GetKeyDown(KeyCode.E) && WeaponManager.Instance != null && WeaponManager.Instance.totalRifelAmmo <= 999)
+                {
+                    WeaponManager.Instance.totalRifelAmmo += 30;
+                }
+
+            }
+
+            if (objectHitByRaycast.CompareTag("TPbox"))
+            {
+                if (box_assist.Instance != null)
+                {
+                    box_assist.Instance.pbox = true;
+                }
+                if (Input.GetKeyDown(KeyCode.E) && WeaponManager.Instance != null && WeaponManager.Instance.totalPistolAmmo <= 999)
+                {
+                    WeaponManager.Instance.totalPistolAmmo += 7;
+                }
+
+            }
+
+            if (objectHitByRaycast.CompareTag("TAbox"))
+            {
+                if (box_assist.Instance != null)
+                {
+                    box_assist.Instance.abox = true;
+                }
+                if (Input.GetKeyDown(KeyCode.E) && WeaponManager.Instance != null && WeaponManager.Instance.totalAntis <= 99)
+                {
+                    WeaponManager.Instance.totalAntis += 1;
+                }
+
+            }
+
 
         }
     }

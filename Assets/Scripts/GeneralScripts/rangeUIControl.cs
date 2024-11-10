@@ -9,6 +9,7 @@ public class rangeUIControl : MonoBehaviour
     public GameObject loseUI;
     public GameObject winUI;
     public GameObject ReloadUI;
+    public GameObject STAUI;
     public void showLoseUI()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -65,12 +66,31 @@ public class rangeUIControl : MonoBehaviour
         }
     }
 
+    public void showSTAUI()
+    {
+        Debug.Log("here1");
+        if (winUI.activeSelf)
+        {
+            Debug.Log("here2");
+            winUI.SetActive(false);
+            STAUI.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
+    }
+
     void Start()
     {
         Time.timeScale = 1f;
         pauseUI.SetActive(false);
         loseUI.SetActive(false);
         winUI.SetActive(false);
+        if(STAUI != null)
+        {
+            STAUI.SetActive(false);
+        }
     }
 
     private void Update()
