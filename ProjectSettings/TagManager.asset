@@ -15,6 +15,7 @@ TagManager:
   - Pbox
   - Rbox
   - Abox
+  - SlowZone
   layers:
   - Default
   - TransparentFX

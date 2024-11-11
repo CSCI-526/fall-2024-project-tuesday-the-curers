@@ -1,12 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 12f;
+    public float reducedSpeed = 6f; // hppp
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    private float originalSpeed; // hpppp
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -17,13 +19,14 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool isMoving;
 
-    private Vector3 lastPosition = new Vector3(0f,0f,0f);
+    private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
     private CharacterController characterController;
 
     // Start is called before the first frame update
     void Start()
     {
-        characterController = GetComponent<CharacterController>(); 
+        characterController = GetComponent<CharacterController>();
+        originalSpeed = speed; // hppppp
     }
 
     // Update is called once per frame
@@ -45,14 +48,14 @@ public class PlayerMovement : MonoBehaviour
 
         //if(Input.GetButton("Jump") && isGrounded)
         //{
-           // velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
+        // velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
         //}
 
         velocity.y += gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
 
-        if(lastPosition != gameObject.transform.position && isGrounded == true)
+        if (lastPosition != gameObject.transform.position && isGrounded == true)
         {
             isMoving = true;
         }
@@ -63,4 +66,26 @@ public class PlayerMovement : MonoBehaviour
 
         lastPosition = gameObject.transform.position;
     }
+
+    // hppppppppp
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SlowZone")) // hpppppppp
+        {
+            speed = reducedSpeed; // hppppppp
+        }
+    }
+
+    // hpppppp
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("SlowZone"))
+        {
+            speed = originalSpeed; // hppppppp
+        }
+    }
+
+
 }
+
+
