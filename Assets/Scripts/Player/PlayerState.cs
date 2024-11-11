@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class playerState : MonoBehaviour
 {
@@ -18,10 +20,18 @@ public class playerState : MonoBehaviour
     private float timmer = 0;
     private float timmer2 = 0;
 
+    private string stat;
+    private string sceneName;
+    private Datacollection datacollation;
+
+    private bool datasent = false;
+
     void Start()
     {
 
         // Health ini
+        datacollation = GetComponent<Datacollection>();
+        
         health = Maxhealth;
         slider.value = calHealth();
     }
@@ -40,9 +50,30 @@ public class playerState : MonoBehaviour
         health -= 10;
         return;
     }
-
+    public void calHealthstat(){
+        sceneName = SceneManager.GetActiveScene().name;
+        float temp = health / Maxhealth;
+        if(temp <= 0.3){
+            stat = "below 30%";
+        }
+        else if((temp > 0.3) && (temp <= 0.5)){
+            stat = "below 50%";
+        }
+        else if((temp > 0.5) && (temp <= 0.75)){
+            stat = "below 75%";
+        }
+        else if((temp > 0.75) && (temp <= 1)){
+            stat = "above 75%";
+        }
+        if(!datasent){
+            Debug.Log("Calling Sendhealthstat for  event...");
+            datacollation.SendHealthstat(sceneName + ": " + health/Maxhealth * 100 + "%");
+            datasent = true;
+        }
+    }
     private float calHealth()
     {
+        
         return health / Maxhealth;
     }
 

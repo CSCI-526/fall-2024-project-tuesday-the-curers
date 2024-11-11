@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2013489366}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: rangeUIControl, Assembly-CSharp
         m_MethodName: showWinUI
         m_Mode: 1
@@ -9556,7 +9556,7 @@ GameObject:
   - component: {fileID: 1144234960}
   - component: {fileID: 1144234959}
   - component: {fileID: 1144234958}
-  - component: {fileID: 1144234957}
+  - component: {fileID: 1144234963}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -9564,19 +9564,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1144234957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144234956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604eea228872be4489df534eceb9b324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaveUI: {fileID: 2013489365}
 --- !u!54 &1144234958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9691,6 +9678,19 @@ Transform:
   - {fileID: 37460670}
   m_Father: {fileID: 1860045831}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1144234963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144234956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631471200517e47358fe7bdb526da845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaveUI: {fileID: 2013489365}
 --- !u!1 &1146287325
 GameObject:
   m_ObjectHideFlags: 0
@@ -9972,6 +9972,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 1861682906}
+--- !u!1 &1161648098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161648100}
+  - component: {fileID: 1161648099}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1161648099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161648098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56077e47f472b487f96ff15fd4780949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTime: 0
+--- !u!4 &1161648100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161648098}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.46745, y: -15.173547, z: -28.038578}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169601212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4340663172360619675, guid: 98ce650e673320b4687785352b8fb090, type: 3}
@@ -15787,6 +15832,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1776359403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776359404}
+  m_Layer: 0
+  m_Name: datacollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1776359404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776359403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.46745, y: -15.173547, z: -28.038578}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777244050
 GameObject:
   m_ObjectHideFlags: 0
@@ -18298,7 +18374,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2013489367}
-  - component: {fileID: 2013489366}
+  - component: {fileID: 2013489370}
+  - component: {fileID: 2013489369}
+  - component: {fileID: 2013489368}
   m_Layer: 0
   m_Name: SRControl
   m_TagString: Untagged
@@ -18306,23 +18384,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2013489366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013489365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783bbc9b162003549a5068ef0965c0e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseUI: {fileID: 1602654209}
-  loseUI: {fileID: 649221217}
-  winUI: {fileID: 1133353597}
-  ReloadUI: {fileID: 1690828968}
-  STAUI: {fileID: 0}
 --- !u!4 &2013489367
 Transform:
   m_ObjectHideFlags: 0
@@ -18338,6 +18399,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2013489368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013489365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56077e47f472b487f96ff15fd4780949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTime: 0
+--- !u!114 &2013489369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013489365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ea7170a80ad4004bb6575d8c75d723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseUI: {fileID: 1602654209}
+  loseUI: {fileID: 649221217}
+  winUI: {fileID: 1133353597}
+  ReloadUI: {fileID: 1690828968}
+  STAUI: {fileID: 0}
+--- !u!114 &2013489370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013489365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989c9a2a73a48fb4b94b7887deebd489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2020831281
 GameObject:
   m_ObjectHideFlags: 0
@@ -18655,7 +18758,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2013489366}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: rangeUIControl, Assembly-CSharp
         m_MethodName: showPulseUI
         m_Mode: 1
@@ -19508,3 +19611,5 @@ SceneRoots:
   - {fileID: 1349468164}
   - {fileID: 652684052}
   - {fileID: 1361301601}
+  - {fileID: 1161648100}
+  - {fileID: 1776359404}

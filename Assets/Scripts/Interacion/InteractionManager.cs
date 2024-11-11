@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class InteractionManager : MonoBehaviour
     public Ammobox hoveredAmmobox = null;
 
     public float rayLength = 2f;
+    private Datacollection datacollation;
+    private bool datasent = false;
+    private string sceneName;
+    private int antido_use;
+    public int count_cured;
 
     private void Awake()
     {
@@ -49,6 +55,7 @@ public class InteractionManager : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    antido_use++;
                     if(objectHitByRaycast.GetComponent<ZombieState>().health <= 50 && WeaponManager.Instance.UseAnti())
                     {
                         if(PlayerResource.Instance != null)
@@ -174,5 +181,20 @@ public class InteractionManager : MonoBehaviour
 
 
         }
+    }
+    public void average_antido(){
+        sceneName = SceneManager.GetActiveScene().name;
+        datacollation = GetComponent<Datacollection>();
+        count_cured = curedCount.Instance.count;
+
+        int average = antido_use / count_cured;
+
+        if(!datasent){
+            Debug.Log("Calling SendAverage Antido for  event...");
+            datacollation.SendAntido_usage(sceneName + ": " + average);
+            datasent = true;
+        }
+
+
     }
 }
