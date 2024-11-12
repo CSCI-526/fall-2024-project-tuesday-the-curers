@@ -9,6 +9,7 @@ public class zimbieChase : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform player;
+    ZombieState zstate;
 
     public float chaseSpeed = 6f;
 
@@ -18,6 +19,17 @@ public class zimbieChase : StateMachineBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
+        zstate = animator.GetComponent<ZombieState>();
+
+        if (zstate.is_night)
+        {
+            chaseSpeed = 8.0f;
+        }
+        if (zstate.boss)
+        {
+            chaseSpeed = 4f;
+            stopChasingDIstance = 150;
+        }
 
         agent.speed = chaseSpeed;
     }

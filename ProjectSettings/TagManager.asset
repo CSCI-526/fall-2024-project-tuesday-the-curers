@@ -10,6 +10,18 @@ TagManager:
   - Bullet
   - Anti
   - wayPoints
+<<<<<<< Updated upstream
+=======
+  - Other
+  - SPUI
+  - Pbox
+  - Rbox
+  - Abox
+  - spzib
+  - TRbox
+  - TPbox
+  - TAbox
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
