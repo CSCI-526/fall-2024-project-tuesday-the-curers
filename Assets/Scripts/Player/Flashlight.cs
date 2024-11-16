@@ -6,7 +6,7 @@ public class Flashlight : MonoBehaviour
 {
     public Light flashlight;          // 将手电筒的光源拖放到此变量中
     private bool isFlashlightOn = false; // 用于存储手电筒的当前状态
-    public float maxDistance = 17f;      // 手电筒照射的最大距离
+    public float maxDistance = 40f;      // 手电筒照射的最大距离
 
     void Start()
     {

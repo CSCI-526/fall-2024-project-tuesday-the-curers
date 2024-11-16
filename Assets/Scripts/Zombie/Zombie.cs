@@ -9,6 +9,5 @@ public class Zombie : MonoBehaviour
     public void SetIlluminated(bool illuminated)
     {
         isIlluminated = illuminated;
-        Debug.Log("Zombie isIlluminated set to: " + isIlluminated);
     }
 }

@@ -41,6 +41,8 @@ public class Weapon : MonoBehaviour
     public Vector3 spawnRotation;
     public int Weapondamage;
 
+    private bool ini = true;
+
     public enum WeaponModel
     {
         Pistol,
@@ -58,7 +60,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = true;
         BurstBulletLeft = bulletPerBurst;
-        bulletLeft = magazineSize;
+        bulletLeft = 0;
     }
 
     private IEnumerator DestoryBulletAfterTime(GameObject bullet, float bulletPrefabLifeTime)
@@ -115,6 +117,18 @@ public class Weapon : MonoBehaviour
     {
         bulletLeft--;
 
+        if (PlayerResource.Instance != null)
+        {
+            if(thisweapon == WeaponModel.Pistol)
+            {
+                PlayerResource.Instance.Dec_Pis(1);
+            }
+            if(thisweapon == WeaponModel.Rifel)
+            {
+                PlayerResource.Instance.Dec_Rif(1);
+            }
+        }
+
         readyToShoot = false;
 
         Vector3 shootingDirection = GetshootingDirection().normalized;
@@ -151,7 +165,11 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-
+        if (ini)
+        {
+            ReloadCompleted();
+            ini = false;
+        }
         if (isActiveWeapon)
         {
             if (currentMode == ShootingMode.Auto)

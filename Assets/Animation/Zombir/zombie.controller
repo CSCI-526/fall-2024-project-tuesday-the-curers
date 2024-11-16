@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9034622388137308359
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed10a22e4076aea44bd4b202f03d06ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolingTime: 10
+  detectionArea: 10
+  patrolSpeed: 2
 --- !u!1101 &-7248821902718310596
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -25,7 +40,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-6826561218251324370
+--- !u!114 &-7063930788505727593
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34,13 +49,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed10a22e4076aea44bd4b202f03d06ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 2057ed1752412ac47aebef1c94f6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolingTime: 10
-  patrolSpeed: 2
-  dayDetectionArea: 10
-  nightDetectionArea: 20
+  idelTime: 4
+  detectionAreaRadius: 10
 --- !u!1101 &-6514317071226787840
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -105,7 +118,7 @@ AnimatorState:
   - {fileID: -6514317071226787840}
   - {fileID: 4252724986252865185}
   m_StateMachineBehaviours:
-  - {fileID: -1068706819396216156}
+  - {fileID: -7063930788505727593}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -134,7 +147,7 @@ AnimatorState:
   - {fileID: 1609663103442925284}
   - {fileID: 3454034841862833517}
   m_StateMachineBehaviours:
-  - {fileID: 5782680544168269679}
+  - {fileID: -972781665819906612}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -149,7 +162,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!114 &-1068706819396216156
+--- !u!114 &-972781665819906612
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +171,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2057ed1752412ac47aebef1c94f6dc64, type: 3}
+  m_Script: {fileID: 11500000, guid: 65b031a1a77b6be46802228b47f907f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idelTime: 0
-  detectionAreaRadius: 10
+  chaseSpeed: 6
+  stopChasingDIstance: 15
+  attackingDistance: 1.5
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -253,7 +267,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -6373628102553290435}
   m_StateMachineBehaviours:
-  - {fileID: 4472866037269351532}
+  - {fileID: 7300154520097519600}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -318,35 +332,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &4472866037269351532
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55a3de591b9df734b81216483526cd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopAttackingDistance: 2
---- !u!114 &5782680544168269679
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b031a1a77b6be46802228b47f907f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseSpeed: 6
-  attackingDistance: 2
-  dayStopChasingDistance: 15
-  nightStopChasingDistance: 25
 --- !u!1102 &6231160165634359593
 AnimatorState:
   serializedVersion: 6
@@ -361,7 +346,7 @@ AnimatorState:
   - {fileID: 7887921078789232103}
   - {fileID: -7248821902718310596}
   m_StateMachineBehaviours:
-  - {fileID: -6826561218251324370}
+  - {fileID: -9034622388137308359}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -376,6 +361,19 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &7300154520097519600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a3de591b9df734b81216483526cd8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopAttackingDistance: 1.5
 --- !u!1101 &7887921078789232103
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -412,7 +410,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -4394065638458274342}
-    m_Position: {x: 330, y: 110, z: 0}
+    m_Position: {x: 340, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6231160165634359593}
     m_Position: {x: 450, y: -120, z: 0}
