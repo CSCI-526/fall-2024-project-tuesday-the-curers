@@ -9,7 +9,7 @@ public class Exit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && can_trigger && curedCount.Instance.level_mission <= curedCount.Instance.count)
+        if (other.gameObject.CompareTag("Player") && can_trigger && curedCount.Instance.level_mission <= curedCount.Instance.count && PickupCount.Instance.level_mission <= PickupCount.Instance.count)
         {
             leaveUI.GetComponent<rangeUIControl>().showWinUI();
             can_trigger = false;

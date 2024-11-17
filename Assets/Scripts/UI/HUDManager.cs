@@ -41,13 +41,13 @@ public class HUDManager : MonoBehaviour
     {
         if(curedCount.Instance.count < curedCount.Instance.level_mission)
         {
-            MissionBoard.text = $"{"Mission: Cure at least " + curedCount.Instance.level_mission + " Zombies "}";
+            MissionBoard.text = $"{"Mission: Cure at least " + curedCount.Instance.level_mission + " Zombies, " + "and pick up at least " + PickupCount.Instance.level_mission + " Gold Balls"}";
         }
-        else if(curedCount.Instance.count >= curedCount.Instance.level_mission) 
+        else if(curedCount.Instance.count >= curedCount.Instance.level_mission && PickupCount.Instance.count >= PickupCount.Instance.level_mission) 
         {
             MissionBoard.text = $"{"Mission accomplish, Find yellow door of the apartment to leave."}";
         }
-        statistic.text = $"{"Cured: " + curedCount.Instance.count + "\n" + "Killed: " + curedCount.Instance.killed}";
+        statistic.text = $"{"\n"+ "\n"+"Cured: " + curedCount.Instance.count + "\n" + "Killed: " + curedCount.Instance.killed + "\n" + "Gold Ball:" + PickupCount.Instance.count}";
         antiNum.text = $"{WeaponManager.Instance.totalAntis}";
         Weapon actived = WeaponManager.Instance.activeWeaponSlot.GetComponentInChildren<Weapon>();
         Weapon unacted = GetUnActivedSlot().GetComponentInChildren<Weapon>();

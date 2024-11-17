@@ -16,7 +16,7 @@ public class ZombieState : MonoBehaviour
     private float timmer = 30f;
     private Renderer objectRenderer;
     public int zombie_state = 0;
-    private Color[] colors = { Color.green, new Color(1f, 0.5f, 0f), Color.red };
+    private Color[] colors = {new Color(1f, 0.5f, 0f), Color.red };
 
     // Movement Control
     private Animator animator;

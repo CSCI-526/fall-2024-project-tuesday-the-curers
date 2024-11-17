@@ -14,6 +14,7 @@ public class HealthPickup : MonoBehaviour
             {
                 health.AddHealth(healthAmount); // Add health to the player.
                 Destroy(gameObject); // Destroy the health pickup after it¡¯s collected.
+                PickupCount.Instance.count++;
             }
         }
     }
