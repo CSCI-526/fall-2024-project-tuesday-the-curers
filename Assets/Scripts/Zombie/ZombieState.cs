@@ -153,7 +153,10 @@ public class ZombieState : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Hospital")
         {
-            // If flashlight is enabled
+            // Initially set health bar to false (hidden)
+            healthbar.SetActive(false);
+
+            // Check if flashlight is enabled
             if (flashlight != null && flashlight.enabled)
             {
                 Vector3 directionToZombie = (transform.position - flashlight.transform.position).normalized;
@@ -165,11 +168,12 @@ public class ZombieState : MonoBehaviour
                 {
                     if (hit.collider.gameObject == gameObject)
                     {
-                        healthbar.SetActive(true);  // Show health bar if flashlight is on
-                        return;
+                        healthbar.SetActive(true);  // Show health bar if flashlight is on and hitting the zombie
+                        return;  // Exit the function here so it doesn't hide the health bar unnecessarily
                     }
                 }
             }
+
             // Hide health bar if flashlight is off or not hitting the zombie
             healthbar.SetActive(false);
         }
@@ -182,5 +186,6 @@ public class ZombieState : MonoBehaviour
             }
         }
     }
+
 
 }
