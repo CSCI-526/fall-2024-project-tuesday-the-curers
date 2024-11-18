@@ -179,6 +179,60 @@ public class InteractionManager : MonoBehaviour
 
             }
 
+            if (objectHitByRaycast.CompareTag("Pboxr"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Recycle_pis(7))
+                    {
+                        PlayerResource.Instance.inc_money(20);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Recycle_pis(7))
+                    {
+                        PlayerResource.Instance.inc_money(20);
+                    }
+                }
+            }
+
+            if (objectHitByRaycast.CompareTag("Rboxr"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Recycle_rif(30))
+                    {
+                        PlayerResource.Instance.inc_money(30);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Recycle_rif(30))
+                    {
+                        PlayerResource.Instance.inc_money(30);
+                    }
+                }
+            }
+
+            if (objectHitByRaycast.CompareTag("Aboxr"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Recycle_Anti(1))
+                    {
+                        PlayerResource.Instance.inc_money(10);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.Recycle_Anti(1))
+                    {
+                        PlayerResource.Instance.inc_money(10);
+                    }
+                }
+            }
+
 
         }
     }

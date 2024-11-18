@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ZombieState : MonoBehaviour
@@ -16,6 +17,9 @@ public class ZombieState : MonoBehaviour
     public bool sp = false;
     public bool ndmg = false;
     public bool boss = false;
+
+    public Light flashlight;
+    public float detectionDistance = 30f;
 
     // Color Controll
     public float timmer = 30f;
@@ -49,10 +53,24 @@ public class ZombieState : MonoBehaviour
         }
         slider.value = calHealth();
 
-
+       
         // State ini
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        if (SceneManager.GetActiveScene().name == "Hospital")
+        {
+            if (healthbar != null)
+            {
+                healthbar.SetActive(false);
+            }
+        }
+        else
+        {
+            if (healthbar != null)
+            {
+                healthbar.SetActive(true);
+            }
+        }
     }
 
     private void colordeeper()
@@ -128,5 +146,41 @@ public class ZombieState : MonoBehaviour
         {
             is_night = DayNightCycle.Instance.IsNight();
         }
+        CheckFlashlight();
     }
+
+    private void CheckFlashlight()
+    {
+        if (SceneManager.GetActiveScene().name == "Hospital")
+        {
+            // If flashlight is enabled
+            if (flashlight != null && flashlight.enabled)
+            {
+                Vector3 directionToZombie = (transform.position - flashlight.transform.position).normalized;
+                Ray ray = new Ray(flashlight.transform.position, directionToZombie);
+                RaycastHit hit;
+
+                // Check if the flashlight hits the zombie
+                if (Physics.Raycast(ray, out hit, detectionDistance))
+                {
+                    if (hit.collider.gameObject == gameObject)
+                    {
+                        healthbar.SetActive(true);  // Show health bar if flashlight is on
+                        return;
+                    }
+                }
+            }
+            // Hide health bar if flashlight is off or not hitting the zombie
+            healthbar.SetActive(false);
+        }
+        else
+        {
+            // Always show health bar in other scenes
+            if (healthbar != null)
+            {
+                healthbar.SetActive(true);
+            }
+        }
+    }
+
 }

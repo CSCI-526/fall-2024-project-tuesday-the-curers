@@ -102,6 +102,42 @@ public class PlayerResource : MonoBehaviour
         Anti += num;
     }
 
+    public bool Recycle_pis(int num)
+    {
+        Pis_ammo -= num;
+       
+        if(Pis_ammo < 0)
+        {
+            Pis_ammo += num;
+            return false;
+        }
+        return true;
+    }
+
+    public bool Recycle_rif(int num)
+    {
+        Rif_ammo -= num;
+
+        if (Rif_ammo < 0)
+        {
+            Rif_ammo += num;
+            return false;
+        }
+        return true;
+    }
+
+    public bool Recycle_Anti(int num)
+    {
+        Anti -= num;
+
+        if (Anti < 0)
+        {
+            Anti += num;
+            return false;
+        }
+        return true;
+    }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

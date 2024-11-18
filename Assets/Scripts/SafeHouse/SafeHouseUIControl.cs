@@ -79,7 +79,7 @@ public class SafeHouseUIControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !disESC)
+        if (Input.GetKeyDown(KeyCode.P) && !disESC)
         {
             showPulseUI();
         }
