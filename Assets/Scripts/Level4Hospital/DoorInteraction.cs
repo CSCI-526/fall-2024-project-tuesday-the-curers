@@ -39,7 +39,7 @@ public class DoorInteraction : MonoBehaviour
         }*/
      
 
-        if (distanceToPlayer <= interactionDistance && Input.GetKeyDown(KeyCode.E))
+        if (distanceToPlayer <= interactionDistance && Input.GetKeyDown(KeyCode.F))
         {
             isRotated = !isRotated;
 
