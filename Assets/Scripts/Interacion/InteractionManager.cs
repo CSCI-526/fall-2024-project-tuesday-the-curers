@@ -90,14 +90,16 @@ public class InteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(30,0))
+                    int temp = PlayerResource.Instance.GetPlayerRif_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(30,0))
                     {
                         PlayerResource.Instance.Inc_Rif(30);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(30, 0))
+                    int temp = PlayerResource.Instance.GetPlayerRif_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(30, 0))
                     {
                         PlayerResource.Instance.Inc_Rif(30);
                     }
@@ -108,14 +110,16 @@ public class InteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(20, 0))
+                    int temp = PlayerResource.Instance.GetPlayerPis_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(20, 0))
                     {
                         PlayerResource.Instance.Inc_Pis(7);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(20, 0))
+                    int temp = PlayerResource.Instance.GetPlayerPis_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(20, 0))
                     {
                         PlayerResource.Instance.Inc_Pis(7);
                     }
@@ -126,14 +130,16 @@ public class InteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(10, 0))
+                    int temp = PlayerResource.Instance.GetPlayeranti();
+                    if (temp < 99 && PlayerResource.Instance.Dec_money(10, 0))
                     {
                         PlayerResource.Instance.Inc_Ant(1);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(10, 0))
+                    int temp = PlayerResource.Instance.GetPlayeranti();
+                    if (temp < 99 && PlayerResource.Instance.Dec_money(10, 0))
                     {
                         PlayerResource.Instance.Inc_Ant(1);
                     }
@@ -177,60 +183,6 @@ public class InteractionManager : MonoBehaviour
                     WeaponManager.Instance.totalAntis += 1;
                 }
 
-            }
-
-            if (objectHitByRaycast.CompareTag("Pboxr"))
-            {
-                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
-                {
-                    if (PlayerResource.Instance.Recycle_pis(7))
-                    {
-                        PlayerResource.Instance.inc_money(20);
-                    }
-                }
-                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
-                {
-                    if (PlayerResource.Instance.Recycle_pis(7))
-                    {
-                        PlayerResource.Instance.inc_money(20);
-                    }
-                }
-            }
-
-            if (objectHitByRaycast.CompareTag("Rboxr"))
-            {
-                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
-                {
-                    if (PlayerResource.Instance.Recycle_rif(30))
-                    {
-                        PlayerResource.Instance.inc_money(30);
-                    }
-                }
-                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
-                {
-                    if (PlayerResource.Instance.Recycle_rif(30))
-                    {
-                        PlayerResource.Instance.inc_money(30);
-                    }
-                }
-            }
-
-            if (objectHitByRaycast.CompareTag("Aboxr"))
-            {
-                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
-                {
-                    if (PlayerResource.Instance.Recycle_Anti(1))
-                    {
-                        PlayerResource.Instance.inc_money(10);
-                    }
-                }
-                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
-                {
-                    if (PlayerResource.Instance.Recycle_Anti(1))
-                    {
-                        PlayerResource.Instance.inc_money(10);
-                    }
-                }
             }
 
 

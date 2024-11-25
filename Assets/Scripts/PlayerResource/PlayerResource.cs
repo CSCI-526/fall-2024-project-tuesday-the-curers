@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerResource : MonoBehaviour
 {
     public static PlayerResource Instance { get; set; }
-    private static int currency = 100;
+    private static int currency = 10000;
     private static int Pis_ammo = 14;
     private static int Rif_ammo = 60;
     private static int Anti = 6;
@@ -64,7 +64,7 @@ public class PlayerResource : MonoBehaviour
     public bool inc_money(int num)
     {
         currency += num;
-        if (currency > 999999999)
+        if (currency > 99999)
         {
             currency -= num;
             return false;
@@ -84,12 +84,29 @@ public class PlayerResource : MonoBehaviour
 
     public void Inc_Rif(int num)
     {
-        Rif_ammo += num;
+        int temp = Rif_ammo + num;
+        if (temp >= 999)
+        {
+            Rif_ammo = 999;
+        }
+        else
+        {
+            Rif_ammo += num;
+        }
+
     }
 
     public void Inc_Pis(int num)
     {
-        Pis_ammo += num;
+        int temp = Pis_ammo + num;
+        if (temp >= 999)
+        {
+            Pis_ammo = 999;
+        }
+        else
+        {
+            Pis_ammo += num;
+        }
     }
 
     public void Dec_Ant(int num)
@@ -99,43 +116,15 @@ public class PlayerResource : MonoBehaviour
 
     public void Inc_Ant(int num)
     {
-        Anti += num;
-    }
-
-    public bool Recycle_pis(int num)
-    {
-        Pis_ammo -= num;
-       
-        if(Pis_ammo < 0)
+        int temp = Anti + num;
+        if (temp >= 99)
         {
-            Pis_ammo += num;
-            return false;
+            Anti = 99;
         }
-        return true;
-    }
-
-    public bool Recycle_rif(int num)
-    {
-        Rif_ammo -= num;
-
-        if (Rif_ammo < 0)
-        {
-            Rif_ammo += num;
-            return false;
-        }
-        return true;
-    }
-
-    public bool Recycle_Anti(int num)
-    {
-        Anti -= num;
-
-        if (Anti < 0)
+        else
         {
             Anti += num;
-            return false;
         }
-        return true;
     }
 
     private void Awake()

@@ -125,7 +125,7 @@ public class RangeUIControal_tutorial : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !disESC)
+        if (Input.GetKeyDown(KeyCode.Escape) && !disESC)
         {
             showPulseUI();
         }
