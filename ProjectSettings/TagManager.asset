@@ -22,6 +22,8 @@ TagManager:
   - RRbox
   - RPbox
   - RAbox
+  - Obstacle
+  - SlowZone
   layers:
   - Default
   - TransparentFX
