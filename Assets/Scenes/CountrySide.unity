@@ -65154,6 +65154,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8406421298231302442, guid: d23238388b294d3458d9adb102eaf4d0, type: 3}
+      propertyPath: m_SlopeLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406421298231302442, guid: d23238388b294d3458d9adb102eaf4d0, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8454825220196286900, guid: d23238388b294d3458d9adb102eaf4d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.62

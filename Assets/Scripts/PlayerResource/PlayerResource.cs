@@ -64,7 +64,7 @@ public class PlayerResource : MonoBehaviour
     public bool inc_money(int num)
     {
         currency += num;
-        if (currency > 999999999)
+        if (currency > 99999)
         {
             currency -= num;
             return false;
@@ -84,12 +84,29 @@ public class PlayerResource : MonoBehaviour
 
     public void Inc_Rif(int num)
     {
-        Rif_ammo += num;
+        int temp = Rif_ammo + num;
+        if (temp >= 999)
+        {
+            Rif_ammo = 999;
+        }
+        else
+        {
+            Rif_ammo += num;
+        }
+
     }
 
     public void Inc_Pis(int num)
     {
-        Pis_ammo += num;
+        int temp = Pis_ammo + num;
+        if (temp >= 999)
+        {
+            Pis_ammo = 999;
+        }
+        else
+        {
+            Pis_ammo += num;
+        }
     }
 
     public void Dec_Ant(int num)
@@ -99,7 +116,57 @@ public class PlayerResource : MonoBehaviour
 
     public void Inc_Ant(int num)
     {
-        Anti += num;
+        int temp = Anti + num;
+        if (temp >= 99)
+        {
+            Anti = 99;
+        }
+        else
+        {
+            Anti += num;
+        }
+    }
+
+    public bool recyclerif(int num)
+    {
+        int temp = Rif_ammo - num;
+        if(temp < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Rif_ammo -= num;
+            return true;
+        }
+    }
+
+    public bool recyclepis(int num)
+    {
+        int temp = Pis_ammo - num;
+        if (temp < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Pis_ammo -= num;
+            return true;
+        }
+    }
+
+    public bool recycleanti(int num)
+    {
+        int temp = Anti - num;
+        if (temp < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Anti -= num;
+            return true;
+        }
     }
 
     private void Awake()

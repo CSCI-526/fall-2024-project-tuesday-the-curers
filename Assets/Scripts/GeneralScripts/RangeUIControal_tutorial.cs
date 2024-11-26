@@ -96,10 +96,8 @@ public class RangeUIControal_tutorial : MonoBehaviour
 
     public void showSTAUI()
     {
-        Debug.Log("here1");
         if (winUI.activeSelf)
         {
-            Debug.Log("here2");
             winUI.SetActive(false);
             STAUI.SetActive(true);
         }
@@ -125,7 +123,7 @@ public class RangeUIControal_tutorial : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !disESC)
+        if (Input.GetKeyDown(KeyCode.P) && !disESC)
         {
             showPulseUI();
         }

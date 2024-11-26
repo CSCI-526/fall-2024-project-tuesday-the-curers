@@ -19,6 +19,9 @@ TagManager:
   - TRbox
   - TPbox
   - TAbox
+  - RRbox
+  - RPbox
+  - RAbox
   layers:
   - Default
   - TransparentFX

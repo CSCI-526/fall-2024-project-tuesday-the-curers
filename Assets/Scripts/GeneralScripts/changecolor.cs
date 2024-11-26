@@ -23,7 +23,7 @@ public class changecolor : MonoBehaviour
     public TextMeshProUGUI aim;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class changecolor : MonoBehaviour
             sta.color = Color.black;
             Amcur.color = Color.black;
             Antianti.color = Color.black;
-            rld.color= Color.black;
+            rld.color = Color.black;
             aim.color = Color.black;
         }
     }
