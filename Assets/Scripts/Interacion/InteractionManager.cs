@@ -11,7 +11,7 @@ public class InteractionManager : MonoBehaviour
     public Weapon hoveredWeapon = null;
     public Ammobox hoveredAmmobox = null;
 
-    public float rayLength = 2f;
+    public float rayLength = 3f;
     private Datacollection datacollation;
     private bool datasent = false;
     private string sceneName;
@@ -90,14 +90,16 @@ public class InteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(30,0))
+                    int temp = PlayerResource.Instance.GetPlayerRif_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(30, 0))
                     {
                         PlayerResource.Instance.Inc_Rif(30);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(30, 0))
+                    int temp = PlayerResource.Instance.GetPlayerRif_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(30, 0))
                     {
                         PlayerResource.Instance.Inc_Rif(30);
                     }
@@ -108,14 +110,16 @@ public class InteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(20, 0))
+                    int temp = PlayerResource.Instance.GetPlayerPis_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(20, 0))
                     {
                         PlayerResource.Instance.Inc_Pis(7);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(20, 0))
+                    int temp = PlayerResource.Instance.GetPlayerPis_ammo();
+                    if (temp < 999 && PlayerResource.Instance.Dec_money(20, 0))
                     {
                         PlayerResource.Instance.Inc_Pis(7);
                     }
@@ -126,14 +130,16 @@ public class InteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(10, 0))
+                    int temp = PlayerResource.Instance.GetPlayeranti();
+                    if (temp < 99 && PlayerResource.Instance.Dec_money(10, 0))
                     {
                         PlayerResource.Instance.Inc_Ant(1);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
                 {
-                    if (PlayerResource.Instance.Dec_money(10, 0))
+                    int temp = PlayerResource.Instance.GetPlayeranti();
+                    if (temp < 99 && PlayerResource.Instance.Dec_money(10, 0))
                     {
                         PlayerResource.Instance.Inc_Ant(1);
                     }
@@ -148,7 +154,14 @@ public class InteractionManager : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.E) && WeaponManager.Instance != null && WeaponManager.Instance.totalRifelAmmo <= 999)
                 {
-                    WeaponManager.Instance.totalRifelAmmo += 30;
+                    if(WeaponManager.Instance.totalRifelAmmo + 30 >= 999)
+                    {
+                        WeaponManager.Instance.totalRifelAmmo = 999;
+                    }
+                    else
+                    {
+                        WeaponManager.Instance.totalRifelAmmo += 30;
+                    }
                 }
 
             }
@@ -161,7 +174,14 @@ public class InteractionManager : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.E) && WeaponManager.Instance != null && WeaponManager.Instance.totalPistolAmmo <= 999)
                 {
-                    WeaponManager.Instance.totalPistolAmmo += 7;
+                    if (WeaponManager.Instance.totalPistolAmmo + 7 >= 999)
+                    {
+                        WeaponManager.Instance.totalPistolAmmo = 999;
+                    }
+                    else
+                    {
+                        WeaponManager.Instance.totalPistolAmmo += 30;
+                    }
                 }
 
             }
@@ -174,12 +194,71 @@ public class InteractionManager : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.E) && WeaponManager.Instance != null && WeaponManager.Instance.totalAntis <= 99)
                 {
-                    WeaponManager.Instance.totalAntis += 1;
+                    if (WeaponManager.Instance.totalAntis + 1 >= 99)
+                    {
+                        WeaponManager.Instance.totalAntis = 99;
+                    }
+                    else
+                    {
+                        WeaponManager.Instance.totalAntis += 1;
+                    }
                 }
 
             }
 
+            if (objectHitByRaycast.CompareTag("RRbox"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.recyclerif(30))
+                    {
+                        PlayerResource.Instance.inc_money(30);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.recyclerif(30))
+                    {
+                        PlayerResource.Instance.inc_money(30);
+                    }
+                }
+            }
 
+            if (objectHitByRaycast.CompareTag("RPbox"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.recyclepis(7))
+                    {
+                        PlayerResource.Instance.inc_money(20);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.recyclepis(7))
+                    {
+                        PlayerResource.Instance.inc_money(20);
+                    }
+                }
+            }
+
+            if (objectHitByRaycast.CompareTag("RAbox"))
+            {
+                if (Input.GetKeyDown(KeyCode.E) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.recycleanti(1))
+                    {
+                        PlayerResource.Instance.inc_money(10);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerResource.Instance != null)
+                {
+                    if (PlayerResource.Instance.recycleanti(1))
+                    {
+                        PlayerResource.Instance.inc_money(10);
+                    }
+                }
+            }
         }
     }
     public void average_antido(){

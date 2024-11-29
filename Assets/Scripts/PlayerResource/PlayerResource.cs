@@ -4,14 +4,34 @@ using UnityEngine;
 
 public class PlayerResource : MonoBehaviour
 {
+    public bool forest = false;
+    public bool compant = false;
+    public bool hospital = false; 
     public static PlayerResource Instance { get; set; }
     private static int currency = 100;
     private static int Pis_ammo = 14;
     private static int Rif_ammo = 60;
     private static int Anti = 6;
 
+    public void setfortrue()
+    {
+        forest = true;
+    }
+
+    public void setcomptrue()
+    {
+        compant = true;
+    }
+
+    public void sethostrue()
+    {
+        hospital = true;
+    }
     public void ResteData()
     {
+        forest = false;
+        compant = false;
+        hospital=false;
         currency = 100;
         Pis_ammo = 14;
         Rif_ammo = 60;
@@ -64,7 +84,7 @@ public class PlayerResource : MonoBehaviour
     public bool inc_money(int num)
     {
         currency += num;
-        if (currency > 999999999)
+        if (currency > 99999)
         {
             currency -= num;
             return false;
@@ -84,12 +104,29 @@ public class PlayerResource : MonoBehaviour
 
     public void Inc_Rif(int num)
     {
-        Rif_ammo += num;
+        int temp = Rif_ammo + num;
+        if (temp >= 999)
+        {
+            Rif_ammo = 999;
+        }
+        else
+        {
+            Rif_ammo += num;
+        }
+
     }
 
     public void Inc_Pis(int num)
     {
-        Pis_ammo += num;
+        int temp = Pis_ammo + num;
+        if (temp >= 999)
+        {
+            Pis_ammo = 999;
+        }
+        else
+        {
+            Pis_ammo += num;
+        }
     }
 
     public void Dec_Ant(int num)
@@ -99,7 +136,57 @@ public class PlayerResource : MonoBehaviour
 
     public void Inc_Ant(int num)
     {
-        Anti += num;
+        int temp = Anti + num;
+        if (temp >= 99)
+        {
+            Anti = 99;
+        }
+        else
+        {
+            Anti += num;
+        }
+    }
+
+    public bool recyclerif(int num)
+    {
+        int temp = Rif_ammo - num;
+        if(temp < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Rif_ammo -= num;
+            return true;
+        }
+    }
+
+    public bool recyclepis(int num)
+    {
+        int temp = Pis_ammo - num;
+        if (temp < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Pis_ammo -= num;
+            return true;
+        }
+    }
+
+    public bool recycleanti(int num)
+    {
+        int temp = Anti - num;
+        if (temp < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Anti -= num;
+            return true;
+        }
     }
 
     private void Awake()

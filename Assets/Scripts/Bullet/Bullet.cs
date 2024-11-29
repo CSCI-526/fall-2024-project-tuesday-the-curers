@@ -12,13 +12,13 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-        }
-
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            SpecialAgent specialAgent = collision.gameObject.GetComponent<SpecialAgent>();
+            if (specialAgent != null)
+            {
+                specialAgent.TakeDamage(bulletDamage);
+            }
             collision.gameObject.GetComponent<ZombieState>().TakeDamage(bulletDamage);
             Destroy(gameObject);
         }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ZombieState : MonoBehaviour
@@ -16,6 +18,9 @@ public class ZombieState : MonoBehaviour
     public bool sp = false;
     public bool ndmg = false;
     public bool boss = false;
+
+    public Light flashlight;
+    public float detectionDistance = 30f;
 
     // Color Controll
     public float timmer = 30f;
@@ -49,10 +54,24 @@ public class ZombieState : MonoBehaviour
         }
         slider.value = calHealth();
 
-
+       
         // State ini
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        if (SceneManager.GetActiveScene().name == "Hospital")
+        {
+            if (healthbar != null)
+            {
+                healthbar.SetActive(false);
+            }
+        }
+        else
+        {
+            if (healthbar != null)
+            {
+                healthbar.SetActive(true);
+            }
+        }
     }
 
     private void colordeeper()
@@ -128,5 +147,51 @@ public class ZombieState : MonoBehaviour
         {
             is_night = DayNightCycle.Instance.IsNight();
         }
+        CheckFlashlight();
     }
+
+    private bool Inlightrange(Light spotlight, GameObject target)
+    {
+        Vector3 directionToTarget = target.transform.position - spotlight.transform.position;
+        float distanceToTarget = directionToTarget.magnitude;
+
+        if (distanceToTarget > spotlight.range) return false;
+
+        float angleToTarget = Vector3.Angle(spotlight.transform.forward, directionToTarget);
+        if (angleToTarget > spotlight.spotAngle / 2) return false;
+
+        return true;
+    }
+
+    private void CheckFlashlight()
+    {
+        if (SceneManager.GetActiveScene().name == "Hospital")
+        {
+            // Initially set health bar to false (hidden)
+            healthbar.SetActive(false);
+
+            // Check if flashlight is enabled
+            if (flashlight != null && flashlight.enabled)
+            {
+                if(Inlightrange(flashlight , gameObject))
+                { 
+                    healthbar.SetActive(true);
+                    gameObject.GetComponent<Zombie>().isIlluminated = true;
+                    return;
+                }
+            }
+            gameObject.GetComponent<Zombie>().isIlluminated = false;
+            healthbar.SetActive(false);
+        }
+        else
+        {
+            // Always show health bar in other scenes
+            if (healthbar != null)
+            {
+                healthbar.SetActive(true);
+            }
+        }
+    }
+
+
 }

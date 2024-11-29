@@ -15,7 +15,7 @@ public class Level1Summary : MonoBehaviour
 
     public void calculation()
     {
-        int sum = (curedCount.Instance.killed * -50 + curedCount.Instance.count * 100);
+        int sum = (curedCount.Instance.killed * -40 + curedCount.Instance.count * 110);
         if(sum >= 0)
         {
             PlayerResource.Instance.inc_money(sum);

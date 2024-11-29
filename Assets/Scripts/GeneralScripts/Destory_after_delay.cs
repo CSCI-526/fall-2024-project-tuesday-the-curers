@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Destory_after_delay : MonoBehaviour
 {
-
+    public int time = 3;
     // Update is called once per frame
     void Update()
     {
@@ -13,7 +13,7 @@ public class Destory_after_delay : MonoBehaviour
 
     public void DestroyAfterDelay()
     {
-        Invoke("DestroyGameObject", 3f);
+        Invoke("DestroyGameObject", time);
     }
 
     private void DestroyGameObject()
