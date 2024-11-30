@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerResource : MonoBehaviour
 {
-    public bool forest = false;
-    public bool compant = false;
-    public bool hospital = false; 
+    public static bool forest = false;
+    public static bool compant = false;
+    public static bool hospital = false; 
     public static PlayerResource Instance { get; set; }
     private static int currency = 100;
     private static int Pis_ammo = 14;

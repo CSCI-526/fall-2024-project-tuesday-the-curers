@@ -59440,9 +59440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17acb4fbe373666479d5cf0cf55877ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forest: 0
-  compant: 0
-  hospital: 0
 --- !u!4 &970862306
 Transform:
   m_ObjectHideFlags: 0
@@ -59952,7 +59949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoveredWeapon: {fileID: 0}
   hoveredAmmobox: {fileID: 0}
-  rayLength: 2
+  rayLength: 3
   count_cured: 0
 --- !u!4 &1005938243
 Transform:
@@ -65140,7 +65137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7549006896173372555, guid: d23238388b294d3458d9adb102eaf4d0, type: 3}
       propertyPath: mouseSensitivity
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7665807447844498011, guid: d23238388b294d3458d9adb102eaf4d0, type: 3}
       propertyPath: lossUI

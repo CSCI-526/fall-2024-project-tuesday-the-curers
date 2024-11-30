@@ -9,7 +9,8 @@ public class leveltext : MonoBehaviour
     public GameObject gate3;
 
     private List<string> begindialog = new List<string> {
-        "Zombies has different infection levels"
+        "Zombies has different infection levels",
+        "Infection levels aggregate every 30s"
     };
 
     private int index = 0;

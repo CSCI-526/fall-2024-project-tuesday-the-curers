@@ -107,7 +107,7 @@ public class playerState : MonoBehaviour
             {
                 if (other.GetComponent<ZombieState>() != null && other.GetComponent<ZombieState>().boss == true)
                 {
-                    TakeDamage(50);
+                    TakeDamage(40);
                 }
                 else TakeDamage(0);
                 timmer2 = 0;
@@ -124,7 +124,7 @@ public class playerState : MonoBehaviour
             {
                 if(other.GetComponent<ZombieState>() != null && other.GetComponent<ZombieState>().boss == true)
                 {
-                    TakeDamage(50);
+                    TakeDamage(40);
                 }
                 else TakeDamage(0);
                 timmer = 0;

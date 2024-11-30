@@ -9,7 +9,7 @@ public class TutorialDial : MonoBehaviour
     public GameObject gate;
 
     private List<string> begindialog = new List<string> {
-        "Use Mouse to move POV; W,A,S,D to move",
+        "Use Mouse to move POV; W,A,S,D to move \nP to pause the game",
         "Left upper corner shows mission; \nRight down corner shows gear info"
     };
 

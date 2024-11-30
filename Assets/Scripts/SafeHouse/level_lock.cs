@@ -15,7 +15,7 @@ public class level_lock : MonoBehaviour
     {
         if(PlayerResource.Instance != null)
         {
-            if (PlayerResource.Instance.forest)
+            if (PlayerResource.forest)
             {
                 friUI.SetActive(true);
                 fribut.SetActive(true);
@@ -26,7 +26,7 @@ public class level_lock : MonoBehaviour
                 fribut.SetActive(false);
             }
 
-            if (PlayerResource.Instance.compant)
+            if (PlayerResource.compant)
             {
                 cpybut.SetActive(true);
                 cpyUI.SetActive(true);
@@ -36,7 +36,7 @@ public class level_lock : MonoBehaviour
                 cpybut.SetActive(false);
                 cpyUI.SetActive(false);
             }
-            if (PlayerResource.Instance.hospital)
+            if (PlayerResource.hospital)
             {
                 hisbiut.SetActive(true);
                 hisUI.SetActive(true);

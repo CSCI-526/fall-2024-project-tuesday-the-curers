@@ -10,7 +10,7 @@ public class Level1Summary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sum.text = $"{"Killed: " + curedCount.Instance.killed + "\nCured: " + curedCount.Instance.count + "\nTotal: " + (curedCount.Instance.killed * -50 + curedCount.Instance.count*100)}";
+        sum.text = $"{"Killed: " + curedCount.Instance.killed + "\nCured: " + curedCount.Instance.count + "\nTotal: " + (curedCount.Instance.killed * -40 + curedCount.Instance.count*110)}";
     }
 
     public void calculation()

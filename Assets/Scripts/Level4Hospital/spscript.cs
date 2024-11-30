@@ -6,13 +6,7 @@ using UnityEngine;
 public class spscript : MonoBehaviour
 {
     public GameObject text;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -22,7 +16,7 @@ public class spscript : MonoBehaviour
         {
             GameObject objectHitByRaycast = hit.transform.gameObject;
 
-            if (objectHitByRaycast.CompareTag("spdoor"))
+            if (objectHitByRaycast.CompareTag("spdoor") && text != null)
             {
                 text.SetActive(true);
             }

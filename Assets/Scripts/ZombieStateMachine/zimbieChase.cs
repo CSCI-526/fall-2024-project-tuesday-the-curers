@@ -27,7 +27,7 @@ public class zimbieChase : StateMachineBehaviour
         }
         if (zstate.boss)
         {
-            chaseSpeed = 4f;
+            chaseSpeed = 5.5f;
             stopChasingDIstance = 150;
         }
 

@@ -80,7 +80,7 @@ public class ZombieState : MonoBehaviour
         {
             zombie_state++;
             objectRenderer.material.color = colors[zombie_state];
-            timmer = 10f;
+            timmer = 30f;
         }
     }
 
@@ -90,7 +90,6 @@ public class ZombieState : MonoBehaviour
         {
             zombie_state--;
             objectRenderer.material.color = colors[zombie_state];
-            timmer = 10f;
             health = Maxhealth;
         }
         else if(zombie_state == 0)

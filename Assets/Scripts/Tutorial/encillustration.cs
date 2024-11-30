@@ -26,12 +26,12 @@ public class encillustration : MonoBehaviour
         }
         else if(ind == 1)
         {
-            Board.text = "<color=red>-$50</color>";
+            Board.text = "<color=red>-$40</color>";
             Invoke("changback", 2.0f);
         }
         else if(ind == 2)
         {
-            Board.text = "<color=#00FF00>+$100</color>";
+            Board.text = "<color=#00FF00>+$110</color>";
             Invoke("changback", 2.0f);
         }
         else
