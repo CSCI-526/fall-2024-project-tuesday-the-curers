@@ -737,9 +737,9 @@ MonoBehaviour:
   - {fileID: 1500719984}
   - {fileID: 847489140}
   activeWeaponSlot: {fileID: 0}
-  totalRifelAmmo: 35
-  totalPistolAmmo: 12
-  totalAntis: 8
+  totalRifelAmmo: 30
+  totalPistolAmmo: 7
+  totalAntis: 6
 --- !u!4 &124005506
 Transform:
   m_ObjectHideFlags: 0
@@ -7736,11 +7736,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cured:1
+  m_text: 'Cured: 1
 
-    Killer:1
+    Killer: 1
 
-    Gold Ball:1'
+    Gold Ball: 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
