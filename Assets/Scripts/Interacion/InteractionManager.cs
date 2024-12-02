@@ -180,7 +180,7 @@ public class InteractionManager : MonoBehaviour
                     }
                     else
                     {
-                        WeaponManager.Instance.totalPistolAmmo += 30;
+                        WeaponManager.Instance.totalPistolAmmo += 7;
                     }
                 }
 

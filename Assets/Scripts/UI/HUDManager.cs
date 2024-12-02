@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
@@ -45,7 +46,14 @@ public class HUDManager : MonoBehaviour
         }
         else if(curedCount.Instance.count >= curedCount.Instance.level_mission) 
         {
-            MissionBoard.text = $"{"Mission accomplish, Leave the area."}";
+            if(SceneManager.GetActiveScene().name == "Tutorial")
+            {
+                MissionBoard.text = $"{"Mission accomplish, Finish tutorial and leave."}";
+            }
+            else
+            {
+                MissionBoard.text = $"{"Mission accomplish, Leave the area."}";
+            }
         }
         statistic.text = $"{"Cured: " + curedCount.Instance.count + "\n" + "Killed: " + curedCount.Instance.killed }";
         antiNum.text = $"{WeaponManager.Instance.totalAntis}";
