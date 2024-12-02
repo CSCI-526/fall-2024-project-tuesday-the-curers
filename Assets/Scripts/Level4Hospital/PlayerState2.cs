@@ -39,7 +39,6 @@ public class playerState2 : MonoBehaviour
     {
         sceneName = SceneManager.GetActiveScene().name;
         float temp = health / Maxhealth;
-        //not been use
         if (temp <= 0.3)
         {
             stat = "below 30%";
@@ -58,7 +57,6 @@ public class playerState2 : MonoBehaviour
         }
         if (!datasent)
         {
-
             Debug.Log("Calling Sendhealthstat for  event...");
             datacollation.SendHealthstat(sceneName + ": " + health / Maxhealth * 100 + "%");
             datasent = true;
