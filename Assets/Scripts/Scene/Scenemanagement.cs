@@ -44,6 +44,11 @@ public class Scenemanagement : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(6);
     }
+    public void LoadLevel5()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(7);
+    }
 
     public void onQuitButton()
     {
